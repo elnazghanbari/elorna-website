@@ -216,21 +216,22 @@ export default function Home() {
       {/* USP */}
       <section style={styles.uspSection}>
         <p style={styles.kicker} className="micro-kicker">WHY ELORNA</p>
-        <h2 style={styles.uspTitle}>One AI-powered system to build, sell and grow — without stitching together disconnected tools.</h2>
+        <span style={styles.goodLabel}>USP — UNIQUE SELLING PROPOSITION</span>
+        <h2 style={styles.uspTitle}>Unlike disconnected AI and business tools, ELORNA connects the founder journey from idea to launch, sales and growth in one AI-assisted ecosystem.</h2>
         <p style={styles.uspText}>
-          Unlike isolated AI apps, ELORNA connects the full founder journey in one coherent environment — with human approval at every important step.
+          One connected journey instead of a stack of separate tools — designed to keep founders in control while AI supports the work.
         </p>
         <div style={styles.positioningGrid}>
           <div className="premium-panel language-premium" style={styles.positioningCard}>
             <span style={styles.goodLabel}>POSITIONING</span>
-            <p style={styles.languageWords}>AI-powered business operating system for founders and small businesses.</p>
+            <p style={styles.languageWords}>ELORNA is an AI-powered business ecosystem for ambitious founders, bringing strategy, execution and growth into one connected journey instead of forcing founders to navigate disconnected tools.</p>
           </div>
           <div className="premium-panel language-premium" style={styles.positioningCard}>
             <span style={styles.goodLabel}>CORE PROMISE</span>
             <p style={styles.languageWords}>One connected infrastructure for building, selling and growing — with AI assistance and founder control.</p>
           </div>
         </div>
-        <div style={styles.uspBadge}>AI-assisted • Human-approved • Connected by design</div>
+        <div style={styles.uspBadge}>AI-assisted • Founder-controlled • Connected by design</div>
       </section>
 
       {/* PILLARS */}
