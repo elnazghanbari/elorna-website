@@ -62,7 +62,7 @@ const showcase = [
     eyebrow: "INTELLIGENCE LAYER",
     title: "AI that works with your business.",
     text: "Intelligent assistance, automation and recommendations designed to reduce repetitive work and support better decisions.",
-    image: "/AI-power.jpg",
+    image: "/Ai-power.jpg",
   },
   {
     eyebrow: "THE VISION",
@@ -117,6 +117,9 @@ export default function Home() {
           </a>
           <a href="#vision" style={styles.navLink}>
             Vision
+          </a>
+          <a href="#contact" style={styles.navLink}>
+            Contact
           </a>
         </nav>
 
@@ -326,9 +329,35 @@ export default function Home() {
           All through one connected vision.
         </p>
 
-        <a href="mailto:hello@elorna.com" style={styles.ctaButton}>
+        <a href="mailto:contact@elorna.net" style={styles.ctaButton}>
           START WITH ELORNA
         </a>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" style={styles.contactSection}>
+        <div style={styles.contactIntro}>
+          <p style={styles.kicker}>CONTACT ELORNA</p>
+          <h2 style={styles.contactTitle}>One official identity. Clear ways to reach us.</h2>
+          <p style={styles.contactText}>
+            Choose the right contact route and we will direct your message to the right place.
+          </p>
+        </div>
+
+        <div style={styles.contactGrid}>
+          <a href="mailto:contact@elorna.net" style={styles.contactCard}>
+            <span style={styles.contactLabel}>GENERAL CONTACT</span>
+            <strong style={styles.contactValue}>contact@elorna.net</strong>
+          </a>
+          <a href="mailto:elnaz@elorna.net" style={styles.contactCard}>
+            <span style={styles.contactLabel}>FOUNDER</span>
+            <strong style={styles.contactValue}>elnaz@elorna.net</strong>
+          </a>
+          <a href="mailto:support@elorna.net" style={styles.contactCard}>
+            <span style={styles.contactLabel}>SUPPORT</span>
+            <strong style={styles.contactValue}>support@elorna.net</strong>
+          </a>
+        </div>
       </section>
 
       {/* FOOTER */}
@@ -346,6 +375,13 @@ export default function Home() {
               AI • IT • INVESTMENT • FUTURE
             </div>
           </div>
+        </div>
+
+        <div style={styles.footerLinks}>
+          <a href="https://elorna.net">elorna.net</a>
+          <a href="mailto:contact@elorna.net">Contact</a>
+          <a href="https://www.linkedin.com/company/elorna" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/elorna.official" target="_blank" rel="noreferrer">Instagram</a>
         </div>
 
         <div style={styles.footerRight}>
@@ -792,6 +828,60 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: 1,
   },
 
+  contactSection: {
+    maxWidth: 1400,
+    margin: "0 auto",
+    padding: "100px 6% 120px",
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  contactIntro: {
+    maxWidth: 850,
+    marginBottom: 42,
+  },
+  contactTitle: {
+    fontFamily: "Georgia, serif",
+    fontSize: "clamp(38px,4vw,60px)",
+    fontWeight: 400,
+    margin: "0 0 20px",
+  },
+  contactText: {
+    color: "#aab1b8",
+    fontSize: 17,
+    lineHeight: 1.75,
+  },
+  contactGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3,1fr)",
+    gap: 16,
+  },
+  contactCard: {
+    padding: 26,
+    border: border,
+    background: "rgba(7,14,21,.85)",
+    textDecoration: "none",
+    minHeight: 130,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  contactLabel: {
+    color: "#86704e",
+    fontSize: 11,
+    letterSpacing: 2,
+  },
+  contactValue: {
+    color: "#e8bd70",
+    fontFamily: "Georgia, serif",
+    fontSize: 20,
+    fontWeight: 400,
+  },
+  footerLinks: {
+    display: "flex",
+    gap: 18,
+    flexWrap: "wrap",
+    fontSize: 12,
+    color: "#a4abb1",
+  },
   footer: {
     padding: "40px 5%",
     borderTop: border,
