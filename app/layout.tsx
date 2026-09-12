@@ -1,5 +1,10 @@
 import "./globals.css";
 
+export const viewport = {
+  themeColor: "#050A11",
+  colorScheme: "dark",
+};
+
 export const metadata = {
   metadataBase: new URL("https://elorna.net"),
   title: {
@@ -20,6 +25,8 @@ export const metadata = {
   authors: [{ name: "ELORNA", url: "https://elorna.net" }],
   creator: "ELORNA",
   publisher: "ELORNA",
+  applicationName: "ELORNA",
+  category: "business",
   alternates: {
     canonical: "/",
   },
