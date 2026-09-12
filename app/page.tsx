@@ -165,7 +165,7 @@ export default function Home() {
           ))}
         </nav>
 
-        <a href="#contact" className="nav-lux-cta" style={styles.navButton}>
+        <a href="#contact" className="nav-lux-cta" style={styles.navButton} aria-label="Start building with ELORNA">
           <span>Start Building</span><span aria-hidden="true">→</span>
         </a>
       </header>
@@ -396,7 +396,7 @@ export default function Home() {
           <span style={styles.contactLabel} className="micro-label">FOUNDER</span>
           <strong style={styles.founderName}>Elnaz Ghanbari</strong>
           <p style={styles.founderText}>
-            Elnaz Ghanbari is the founder of ELORNA. She is building the platform around a practical principle: AI should reduce complexity, explain the next step and keep important business decisions under human control. ELORNA is an early-stage founder-led product, and examples shown on this site are clearly presented as workflows or prototypes rather than invented client results.
+            Elnaz Ghanbari is the founder of ELORNA and leads its product direction, brand system and founder experience. She is building the platform around a practical principle: AI should reduce complexity, explain the next step and keep important business decisions under human control. ELORNA is an early-stage founder-led product, and examples shown on this site are clearly presented as workflows or prototypes rather than invented client results.
           </p>
           <a href="mailto:elnaz@elorna.net" className="copper-link" style={styles.founderLink}>elnaz@elorna.net</a>
         </div>
@@ -433,7 +433,7 @@ export default function Home() {
           All through one connected vision.
         </p>
 
-        <a href="#contact" className="lux-button lux-button-primary" style={styles.ctaButton}>
+        <a href="#contact" className="lux-button lux-button-primary" style={styles.ctaButton} aria-label="Contact ELORNA to start building">
           START WITH ELORNA
         </a>
       </section>
@@ -498,7 +498,7 @@ export default function Home() {
             <input type="hidden" name="_subject" value="New ELORNA website inquiry" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://elorna.net/#contact" />
+            <input type="hidden" name="_next" value="https://elorna.net/thank-you" />
             <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
             <label style={styles.formLabel}>
               Name
