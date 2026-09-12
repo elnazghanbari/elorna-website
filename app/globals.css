@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root{
   --elorna-copper:#c87941;
@@ -46,7 +46,7 @@ a,button,input,textarea{
   align-items:center;
   gap:2px;
   padding:14px 4px 11px;
-  font-family:'Cormorant Garamond',Georgia,serif;
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif;
   isolation:isolate;
 }
 
@@ -93,7 +93,7 @@ a,button,input,textarea{
 
 .nav-lux-label{
   display:block;
-  font-family:'Cormorant Garamond',Georgia,serif;
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif;
   font-size:19px;
   font-weight:500;
   letter-spacing:.015em;
@@ -103,7 +103,7 @@ a,button,input,textarea{
 .nav-lux-cta{
   position:relative;
   overflow:hidden;
-  font-family:'Cormorant Garamond',Georgia,serif;
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif;
   font-size:17px !important;
   box-shadow:inset 0 0 0 1px rgba(255,223,159,.1),0 0 0 1px rgba(214,163,74,.05);
 }
@@ -416,4 +416,75 @@ p{
   .premium-form,.premium-contact-card,.founder-premium,.language-premium{
     border-width:1.5px !important;
   }
+}
+
+
+/* --- ELORNA refined display typography --- */
+.nav-lux-number{display:none !important}
+
+.nav-lux-link{
+  padding:15px 7px 13px;
+  min-width:auto;
+}
+
+.nav-lux-label{
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif !important;
+  font-size:22px !important;
+  font-weight:600 !important;
+  letter-spacing:.015em !important;
+  line-height:1 !important;
+  text-rendering:geometricPrecision;
+}
+
+.nav-lux-cta{
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif !important;
+  font-weight:600 !important;
+  font-size:18px !important;
+}
+
+h1,h2,h3,
+[style*="Bodoni Moda"]{
+  text-rendering:geometricPrecision;
+}
+
+.micro-kicker{
+  font-weight:700 !important;
+  font-size:13.5px !important;
+}
+
+.micro-label,
+.micro-badge,
+.micro-pill{
+  font-weight:700 !important;
+}
+
+.stage-premium h3,
+.premium-contact-card strong,
+.founder-premium strong{
+  font-family:'Bodoni Moda','Cormorant Garamond',Georgia,serif !important;
+}
+
+.stage-premium h3{
+  font-weight:600 !important;
+  letter-spacing:.015em !important;
+}
+
+.premium-contact-card strong{
+  font-weight:600 !important;
+}
+
+.premium-panel p,
+.premium-form label,
+.premium-form input,
+.premium-form textarea,
+.footer-lux-links{
+  font-weight:500;
+}
+
+@media(max-width:1050px){
+  .nav-lux-label{font-size:20px !important}
+}
+
+@media(max-width:780px){
+  .nav-lux-link{display:none}
 }
