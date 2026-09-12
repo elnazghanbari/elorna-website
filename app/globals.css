@@ -488,3 +488,32 @@ h1,h2,h3,
 @media(max-width:780px){
   .nav-lux-link{display:none}
 }
+
+
+/* ELORNA language selector */
+.language-menu summary::-webkit-details-marker{display:none}
+.language-menu summary::marker{display:none;content:""}
+.language-menu[open] summary{
+  color:#f2c994 !important;
+  border-color:#c87941 !important;
+  background:rgba(200,121,65,.08);
+}
+.language-option{
+  display:block;
+  padding:11px 12px;
+  border-radius:8px;
+  color:#d8dde1;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.language-option:hover,.language-option:focus-visible{
+  color:#f2c994;
+  background:rgba(200,121,65,.1);
+  outline:none;
+}
+@media(max-width:780px){
+  .language-menu{display:block !important}
+  .nav-lux-cta{padding:10px 14px !important}
+}
