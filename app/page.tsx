@@ -47,25 +47,25 @@ const showcase = [
     image: "/our-solution.jpg",
   },
   {
-    eyebrow: "01 / BUILD",
+    eyebrow: "BUILD",
     title: "From idea to launch.",
     text: "For early-stage founders: clarify the offer, positioning and brand direction, then turn them into a practical launch-ready foundation.",
     image: "/build.jpg",
   },
   {
-    eyebrow: "02 / SELL",
+    eyebrow: "SELL",
     title: "Turn attention into revenue.",
     text: "For businesses ready to sell: map the customer journey, define conversion touchpoints and connect the tools needed to measure what happens next.",
     image: "/sell.jpg",
   },
   {
-    eyebrow: "03 / GROW",
+    eyebrow: "GROW",
     title: "Make growth measurable.",
     text: "For businesses with traction: review real performance data, identify bottlenecks and turn AI-assisted insights into focused tests and measurable priorities.",
     image: "/grow.jpg",
   },
   {
-    eyebrow: "04 / CAPITAL",
+    eyebrow: "CAPITAL",
     title: "Prepare for the next level.",
     text: "Build stronger business fundamentals and prepare for future capital conversations. ELORNA provides readiness tools and information, not investment advice, brokerage or guaranteed funding.",
     image: "/invest.jpg",
@@ -153,14 +153,13 @@ export default function Home() {
 
         <nav style={styles.navLinks} aria-label="Primary navigation">
           {[
-            ["01", "Platform", "#platform"],
-            ["02", "Journey", "#journey"],
-            ["03", "AI", "#ai"],
-            ["04", "Vision", "#vision"],
-            ["05", "Contact", "#contact"],
-          ].map(([number, label, href]) => (
+            ["Platform", "#platform"],
+            ["Journey", "#journey"],
+            ["AI", "#ai"],
+            ["Vision", "#vision"],
+            ["Contact", "#contact"],
+          ].map(([label, href]) => (
             <a key={label} href={href} className="nav-lux-link" style={styles.navLink}>
-              <span className="nav-lux-number">{number}</span>
               <span className="nav-lux-label">{label}</span>
             </a>
           ))}
@@ -265,7 +264,6 @@ export default function Home() {
       <section id="journey" style={styles.journey}>
         {businessStages.map((stage) => (
           <div key={stage.number} className="premium-panel stage-premium" style={styles.stage}>
-            <span style={styles.stageNumber}>{stage.number}</span>
             <h3 style={styles.stageTitle}>{stage.title}</h3>
             <p style={styles.stageText}>{stage.text}</p>
             <div style={styles.stageMeta}>
@@ -381,7 +379,7 @@ export default function Home() {
           </p>
         </div>
         <div style={styles.proofFlow}>
-          {["01 Idea & context","02 Positioning & offer","03 Launch plan","04 Sales journey","05 Measure & improve"].map((step) => (
+          {["Idea & context","Positioning & offer","Launch plan","Sales journey","Measure & improve"].map((step) => (
             <span key={step} className="premium-panel proof-step-premium" style={styles.proofStep}>{step}</span>
           ))}
         </div>
@@ -577,7 +575,7 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 12,
     color: "#e8bd70",
     textDecoration: "none",
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: 23,
     letterSpacing: 6,
   },
@@ -656,7 +654,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   heroTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(54px, 7vw, 105px)",
     lineHeight: 0.95,
     letterSpacing: -3,
@@ -669,8 +667,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   heroText: {
-    color: "#b9bec4",
-    fontSize: 18,
+    color: "#d1d5d8",
+    fontSize: 19,
     lineHeight: 1.8,
     maxWidth: 650,
   },
@@ -741,7 +739,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   pillarTitle: {
     color: gold,
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     letterSpacing: 1,
     fontSize: 18,
   },
@@ -760,9 +758,9 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   sectionTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
-    fontWeight: 400,
-    fontSize: "clamp(45px,6vw,82px)",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(48px,6vw,84px)",
     lineHeight: 1.05,
     margin: "0 0 28px",
   },
@@ -799,10 +797,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   stageTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     color: "#e6bd76",
-    fontSize: 30,
-    margin: "30px 0 15px",
+    fontSize: 34,
+    fontWeight: 600,
+    margin: "22px 0 15px",
   },
 
   stageText: {
@@ -877,16 +876,16 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   showcaseTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
-    fontWeight: 400,
-    fontSize: "clamp(40px,5vw,68px)",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(42px,5vw,70px)",
     lineHeight: 1.05,
     margin: "0 0 25px",
   },
 
   showcaseText: {
-    color: "#a7afb6",
-    fontSize: 18,
+    color: "#c2c8cd",
+    fontSize: 19,
     lineHeight: 1.8,
   },
 
@@ -906,17 +905,17 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   visionTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
-    fontWeight: 400,
-    fontSize: "clamp(45px,6vw,85px)",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(48px,6vw,86px)",
     lineHeight: 1.05,
     margin: "0 auto 30px",
   },
 
   visionText: {
-    maxWidth: 720,
+    maxWidth: 760,
     margin: "auto",
-    color: "#a5adb4",
+    color: "#c0c6cb",
     lineHeight: 1.8,
     fontSize: 18,
   },
@@ -980,9 +979,9 @@ const styles: Record<string, React.CSSProperties> = {
 
   ctaTitle: {
     position: "relative",
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
-    fontWeight: 400,
-    fontSize: "clamp(48px,7vw,90px)",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(52px,7vw,92px)",
     lineHeight: 1,
     margin: "0 0 30px",
   },
@@ -1018,7 +1017,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: border,
   },
   proofTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,60px)",
     fontWeight: 400,
     lineHeight: 1.08,
@@ -1052,7 +1051,7 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 42,
   },
   contactTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,60px)",
     fontWeight: 400,
     margin: "0 0 20px",
@@ -1141,7 +1140,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   contactValue: {
     color: "#e8bd70",
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: 24,
     fontWeight: 500,
   },
@@ -1153,7 +1152,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderBottom: border,
   },
   uspTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(42px,5vw,72px)",
     fontWeight: 400,
     lineHeight: 1.06,
@@ -1199,7 +1198,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: border,
   },
   founderTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(40px,4.6vw,68px)",
     fontWeight: 400,
     lineHeight: 1.06,
@@ -1213,7 +1212,7 @@ const styles: Record<string, React.CSSProperties> = {
   founderName: {
     display: "block",
     color: "#e8bd70",
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: 28,
     fontWeight: 400,
     margin: "14px 0",
@@ -1249,7 +1248,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: "1px solid rgba(255,255,255,.07)",
   },
   languageTitle: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,58px)",
     fontWeight: 400,
     margin: "0 0 32px",
@@ -1320,7 +1319,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   footerName: {
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
     color: "#e6bb6d",
     fontSize: 23,
     letterSpacing: 7,
