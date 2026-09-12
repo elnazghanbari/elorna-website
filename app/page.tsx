@@ -465,6 +465,28 @@ export default function Home() {
           </p>
         </div>
 
+        <div style={styles.socialStrip}>
+          <span style={styles.contactLabel} className="micro-label">FOLLOW ELORNA</span>
+          <div style={styles.socialLinks}>
+            <a
+              href="https://www.linkedin.com/company/elorna"
+              target="_blank"
+              rel="noreferrer"
+              className="copper-link social-link"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.instagram.com/elorna.official"
+              target="_blank"
+              rel="noreferrer"
+              className="copper-link social-link"
+            >
+              Instagram
+            </a>
+          </div>
+        </div>
+
         <div style={styles.contactLayout}>
           <form
             className="premium-panel premium-form"
@@ -1064,6 +1086,19 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#aab1b8",
     fontSize: 19,
     lineHeight: 1.75,
+  },
+  socialStrip: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 20,
+    flexWrap: "wrap",
+    padding: "18px 0 28px",
+  },
+  socialLinks: {
+    display: "flex",
+    gap: 14,
+    flexWrap: "wrap",
   },
   contactLayout: {
     display: "grid",
