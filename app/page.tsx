@@ -165,9 +165,21 @@ export default function Home() {
           ))}
         </nav>
 
-        <a href="#contact" className="nav-lux-cta" style={styles.navButton} aria-label="Start building with ELORNA">
-          <span>Start Building</span><span aria-hidden="true">→</span>
-        </a>
+        <div style={styles.navActions}>
+          <details className="language-menu" style={styles.languageMenu}>
+            <summary aria-label="Choose language" style={styles.languageSummary}>
+              <span aria-hidden="true">◎</span><span>EN</span>
+            </summary>
+            <div className="language-dropdown" style={styles.languageDropdown}>
+              <a href="/" className="language-option" lang="en">English</a>
+              <a href="/sv" className="language-option" lang="sv">Svenska</a>
+              <a href="/fa" className="language-option" lang="fa" dir="rtl">فارسی</a>
+            </div>
+          </details>
+          <a href="#contact" className="nav-lux-cta" style={styles.navButton} aria-label="Start building with ELORNA">
+            <span>Start Building</span><span aria-hidden="true">→</span>
+          </a>
+        </div>
       </header>
 
       {/* HERO */}
@@ -629,6 +641,40 @@ const styles: Record<string, React.CSSProperties> = {
     position: "relative",
   },
 
+  navActions: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+  },
+  languageMenu: {
+    position: "relative",
+  },
+  languageSummary: {
+    listStyle: "none",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: 7,
+    padding: "11px 13px",
+    border: "1px solid rgba(214,163,74,.38)",
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: ".08em",
+  },
+  languageDropdown: {
+    position: "absolute",
+    right: 0,
+    top: "calc(100% + 10px)",
+    minWidth: 150,
+    padding: 8,
+    border: "1px solid rgba(214,163,74,.32)",
+    borderRadius: 12,
+    background: "#07111b",
+    boxShadow: "0 20px 50px rgba(0,0,0,.4)",
+    zIndex: 100,
+  },
   navButton: {
     color: "#f0c97c",
     textDecoration: "none",
