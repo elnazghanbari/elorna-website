@@ -2,22 +2,34 @@ const businessStages = [
   {
     number: "01",
     title: "BUILD",
-    text: "Turn an idea into a focused business — from strategy and brand to launch.",
+    text: "Turn an idea into a focused business — from strategy and positioning to a launch-ready brand foundation.",
+    bestFor: "Early-stage founders turning an idea into a clear business offer.",
+    example: "Example deliverable: positioning, brand direction and a practical launch checklist.",
+    engagement: "Pilot access / custom scope",
   },
   {
     number: "02",
     title: "SELL",
-    text: "Create a clearer path to customers, conversion and revenue.",
+    text: "Create a clearer route from offer to customer with structured sales journeys, conversion touchpoints and performance tracking.",
+    bestFor: "Businesses that have an offer but need a clearer path to customers.",
+    example: "Example workflow: offer review → customer journey → conversion plan → measurement.",
+    engagement: "Request a consultation",
   },
   {
     number: "03",
     title: "GROW",
-    text: "Use data, analytics and AI to make smarter decisions and scale.",
+    text: "Use business data, analytics and AI-assisted recommendations to identify bottlenecks, priorities and measurable next steps.",
+    bestFor: "Founders with real activity or sales data who want clearer growth decisions.",
+    example: "Example workflow: data review → priority signals → test plan → progress tracking.",
+    engagement: "Pilot access / discovery",
   },
   {
     number: "04",
     title: "CAPITAL",
-    text: "Build stronger business fundamentals and prepare for future capital opportunities — without promises of funding or investment outcomes.",
+    text: "Organize business fundamentals, readiness information and growth evidence before future capital conversations — without promises of funding or investment outcomes.",
+    bestFor: "Growth-stage businesses preparing for future investor or financing conversations.",
+    example: "Example deliverable: readiness checklist, information structure and preparation guidance.",
+    engagement: "Custom scope after discovery",
   },
 ];
 
@@ -37,19 +49,19 @@ const showcase = [
   {
     eyebrow: "01 / BUILD",
     title: "From idea to launch.",
-    text: "Transform your vision into a structured business, powerful brand and launch-ready foundation.",
+    text: "For early-stage founders: clarify the offer, positioning and brand direction, then turn them into a practical launch-ready foundation.",
     image: "/build.jpg",
   },
   {
     eyebrow: "02 / SELL",
     title: "Turn attention into revenue.",
-    text: "Create stronger customer journeys with sales tools, funnels, commerce, leads and analytics.",
+    text: "For businesses ready to sell: map the customer journey, define conversion touchpoints and connect the tools needed to measure what happens next.",
     image: "/sell.jpg",
   },
   {
     eyebrow: "03 / GROW",
     title: "Make growth measurable.",
-    text: "Use data, AI insights and optimization to understand performance and identify the next opportunity.",
+    text: "For businesses with traction: review real performance data, identify bottlenecks and turn AI-assisted insights into focused tests and measurable priorities.",
     image: "/grow.jpg",
   },
   {
@@ -123,7 +135,7 @@ export default function Home() {
           </a>
         </nav>
 
-        <a href="#start" style={styles.navButton}>
+        <a href="#contact" style={styles.navButton}>
           Start Building
         </a>
       </header>
@@ -142,7 +154,7 @@ export default function Home() {
           </h1>
 
           <p style={styles.heroText}>
-            ELORNA is an AI-powered business operating system for founders who want one connected path from idea to launch, sales and growth — without stitching together disconnected tools.
+            For founders and small businesses building a serious digital business: ELORNA connects strategy, launch, sales and growth in one AI-assisted path — so you know what to do next, which tools support it and what progress to measure.
           </p>
 
           <div style={styles.heroButtons}>
@@ -215,6 +227,11 @@ export default function Home() {
             <span style={styles.stageNumber}>{stage.number}</span>
             <h3 style={styles.stageTitle}>{stage.title}</h3>
             <p style={styles.stageText}>{stage.text}</p>
+            <div style={styles.stageMeta}>
+              <p style={styles.stageMetaText}><strong>Best for:</strong> {stage.bestFor}</p>
+              <p style={styles.stageMetaText}>{stage.example}</p>
+              <span style={styles.engagement}>{stage.engagement}</span>
+            </div>
           </div>
         ))}
       </section>
@@ -313,6 +330,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TRANSPARENT PROOF */}
+      <section style={styles.proofSection}>
+        <div>
+          <p style={styles.kicker}>HOW THE WORK CAN LOOK</p>
+          <h2 style={styles.proofTitle}>A transparent sample workflow — not a fabricated client result.</h2>
+          <p style={styles.proofText}>
+            Example: a founder arrives with an early idea. ELORNA can help structure the offer, clarify positioning, build a launch checklist, map a first sales journey and define the measurements to review next. This is a methodology example, not a claim of guaranteed results.
+          </p>
+        </div>
+        <div style={styles.proofFlow}>
+          {["01 Idea & context","02 Positioning & offer","03 Launch plan","04 Sales journey","05 Measure & improve"].map((step) => (
+            <span key={step} style={styles.proofStep}>{step}</span>
+          ))}
+        </div>
+      </section>
+
       {/* FOUNDER & TRUST */}
       <section style={styles.founderSection}>
         <div>
@@ -323,7 +356,7 @@ export default function Home() {
           <span style={styles.contactLabel}>FOUNDER</span>
           <strong style={styles.founderName}>Elnaz Ghanbari</strong>
           <p style={styles.founderText}>
-            ELORNA is being built as a practical, responsible AI business ecosystem. Recommendations remain assistive: founders review important decisions and stay in control.
+            Elnaz Ghanbari is the founder of ELORNA. She is building the platform around a practical principle: AI should reduce complexity, explain the next step and keep important business decisions under human control. ELORNA is an early-stage founder-led product, and examples shown on this site are clearly presented as workflows or prototypes rather than invented client results.
           </p>
           <a href="mailto:elnaz@elorna.net" style={styles.founderLink}>elnaz@elorna.net</a>
         </div>
@@ -360,7 +393,7 @@ export default function Home() {
           All through one connected vision.
         </p>
 
-        <a href="mailto:contact@elorna.net" style={styles.ctaButton}>
+        <a href="#contact" style={styles.ctaButton}>
           START WITH ELORNA
         </a>
       </section>
@@ -389,23 +422,47 @@ export default function Home() {
           <p style={styles.kicker}>CONTACT ELORNA</p>
           <h2 style={styles.contactTitle}>One official identity. Clear ways to reach us.</h2>
           <p style={styles.contactText}>
-            Choose the right contact route and we will direct your message to the right place.
+            Tell us what you are building, where you are stuck and what kind of support you are looking for. The form opens a prepared email to our official contact inbox.
           </p>
         </div>
 
-        <div style={styles.contactGrid}>
-          <a href="mailto:contact@elorna.net" style={styles.contactCard}>
-            <span style={styles.contactLabel}>GENERAL CONTACT</span>
-            <strong style={styles.contactValue}>contact@elorna.net</strong>
-          </a>
-          <a href="mailto:elnaz@elorna.net" style={styles.contactCard}>
-            <span style={styles.contactLabel}>FOUNDER</span>
-            <strong style={styles.contactValue}>elnaz@elorna.net</strong>
-          </a>
-          <a href="mailto:support@elorna.net" style={styles.contactCard}>
-            <span style={styles.contactLabel}>SUPPORT</span>
-            <strong style={styles.contactValue}>support@elorna.net</strong>
-          </a>
+        <div style={styles.contactLayout}>
+          <form
+            action="mailto:contact@elorna.net?subject=ELORNA%20website%20inquiry"
+            method="post"
+            encType="text/plain"
+            style={styles.contactForm}
+          >
+            <label style={styles.formLabel}>
+              Name
+              <input name="name" required style={styles.formInput} placeholder="Your name" />
+            </label>
+            <label style={styles.formLabel}>
+              Email
+              <input name="email" type="email" required style={styles.formInput} placeholder="you@example.com" />
+            </label>
+            <label style={styles.formLabel}>
+              Message
+              <textarea name="message" required style={styles.formTextarea} placeholder="Tell us what you are building and what you need help with." />
+            </label>
+            <button type="submit" style={styles.formButton}>SEND TO ELORNA</button>
+            <p style={styles.formNote}>Submitting opens your email app with the message addressed to contact@elorna.net.</p>
+          </form>
+
+          <div style={styles.contactGrid}>
+            <a href="mailto:contact@elorna.net" style={styles.contactCard}>
+              <span style={styles.contactLabel}>GENERAL CONTACT</span>
+              <strong style={styles.contactValue}>contact@elorna.net</strong>
+            </a>
+            <a href="mailto:elnaz@elorna.net" style={styles.contactCard}>
+              <span style={styles.contactLabel}>FOUNDER</span>
+              <strong style={styles.contactValue}>elnaz@elorna.net</strong>
+            </a>
+            <a href="mailto:support@elorna.net" style={styles.contactCard}>
+              <span style={styles.contactLabel}>SUPPORT</span>
+              <strong style={styles.contactValue}>support@elorna.net</strong>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -428,7 +485,8 @@ export default function Home() {
 
         <div style={styles.footerLinks}>
           <a href="https://elorna.net">elorna.net</a>
-          <a href="mailto:contact@elorna.net">Contact</a>
+          <a href="mailto:contact@elorna.net">contact@elorna.net</a>
+          <a href="mailto:support@elorna.net">support@elorna.net</a>
           <a href="https://www.linkedin.com/company/elorna" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="https://www.instagram.com/elorna.official" target="_blank" rel="noreferrer">Instagram</a>
         </div>
@@ -702,6 +760,28 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#9da5ad",
     lineHeight: 1.7,
   },
+  stageMeta: {
+    marginTop: 24,
+    paddingTop: 20,
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  stageMetaText: {
+    margin: "0 0 10px",
+    color: "#7f8992",
+    fontSize: 12,
+    lineHeight: 1.55,
+  },
+  engagement: {
+    display: "inline-block",
+    marginTop: 8,
+    padding: "7px 10px",
+    border: border,
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 10,
+    letterSpacing: 1,
+    textTransform: "uppercase",
+  },
 
   featureImageSection: {
     maxWidth: 1250,
@@ -878,6 +958,40 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: 1,
   },
 
+  proofSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "105px 6%",
+    display: "grid",
+    gridTemplateColumns: "1.1fr .9fr",
+    gap: 50,
+    alignItems: "start",
+    borderTop: border,
+  },
+  proofTitle: {
+    fontFamily: "Georgia, serif",
+    fontSize: "clamp(38px,4vw,60px)",
+    fontWeight: 400,
+    lineHeight: 1.08,
+    margin: "0 0 22px",
+  },
+  proofText: {
+    color: "#aab1b8",
+    fontSize: 16,
+    lineHeight: 1.75,
+    margin: 0,
+  },
+  proofFlow: {
+    display: "grid",
+    gap: 10,
+  },
+  proofStep: {
+    padding: "16px 18px",
+    border: border,
+    background: "rgba(7,14,21,.82)",
+    color: "#c6cbd0",
+    fontSize: 13,
+  },
   contactSection: {
     maxWidth: 1400,
     margin: "0 auto",
@@ -899,9 +1013,66 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: 17,
     lineHeight: 1.75,
   },
+  contactLayout: {
+    display: "grid",
+    gridTemplateColumns: "1.05fr .95fr",
+    gap: 24,
+    alignItems: "start",
+  },
+  contactForm: {
+    display: "grid",
+    gap: 16,
+    padding: 28,
+    border: border,
+    background: "rgba(7,14,21,.85)",
+  },
+  formLabel: {
+    display: "grid",
+    gap: 8,
+    color: "#c6cbd0",
+    fontSize: 12,
+    letterSpacing: .5,
+  },
+  formInput: {
+    width: "100%",
+    padding: "13px 14px",
+    border: "1px solid rgba(255,255,255,.14)",
+    borderRadius: 6,
+    background: "#050b11",
+    color: "#f4efe6",
+    fontSize: 14,
+  },
+  formTextarea: {
+    width: "100%",
+    minHeight: 150,
+    resize: "vertical",
+    padding: "13px 14px",
+    border: "1px solid rgba(255,255,255,.14)",
+    borderRadius: 6,
+    background: "#050b11",
+    color: "#f4efe6",
+    fontSize: 14,
+    fontFamily: "Arial, Helvetica, sans-serif",
+  },
+  formButton: {
+    border: 0,
+    borderRadius: 6,
+    padding: "14px 18px",
+    background: gold,
+    color: "#07101a",
+    fontWeight: 800,
+    letterSpacing: 1,
+    cursor: "pointer",
+  },
+  formNote: {
+    margin: 0,
+    color: "#737d85",
+    fontSize: 11,
+    lineHeight: 1.5,
+  },
   contactGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3,1fr)",
+    gridTemplateColumns: "1fr",
     gap: 16,
   },
   contactCard: {
