@@ -7,9 +7,32 @@ export const metadata = {
     template: "%s | ELORNA",
   },
   description:
-    "ELORNA helps founders build, sell and grow through one connected AI-powered business operating system.",
+    "ELORNA is an AI-powered business operating system for founders and small businesses — connecting strategy, launch, sales and growth in one intelligent path.",
+  keywords: [
+    "ELORNA",
+    "elorna.net",
+    "AI business operating system",
+    "AI for founders",
+    "business growth AI",
+    "startup business platform",
+    "AI business tools",
+  ],
+  authors: [{ name: "ELORNA", url: "https://elorna.net" }],
+  creator: "ELORNA",
+  publisher: "ELORNA",
   alternates: {
     canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
     icon: "/elorna-emblem.jpg",
@@ -19,7 +42,7 @@ export const metadata = {
   openGraph: {
     title: "ELORNA — AI Business Operating System",
     description:
-      "One connected path from idea to launch, sales and growth — with AI assistance and founder control.",
+      "ELORNA connects strategy, launch, sales and growth in one AI-assisted, founder-controlled business operating system.",
     url: "https://elorna.net",
     siteName: "ELORNA",
     type: "website",
