@@ -468,11 +468,15 @@ export default function Home() {
         <div style={styles.contactLayout}>
           <form
             className="premium-panel premium-form"
-            action="mailto:contact@elorna.net?subject=ELORNA%20website%20inquiry"
-            method="post"
-            encType="text/plain"
+            action="https://formsubmit.co/contact@elorna.net"
+            method="POST"
             style={styles.contactForm}
           >
+            <input type="hidden" name="_subject" value="New ELORNA website inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://elorna.net/#contact" />
+            <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
             <label style={styles.formLabel}>
               Name
               <input name="name" required style={styles.formInput} placeholder="Your name" />
@@ -486,7 +490,7 @@ export default function Home() {
               <textarea name="message" required style={styles.formTextarea} placeholder="Tell us what you are building and what you need help with." />
             </label>
             <button type="submit" style={styles.formButton}>SEND TO ELORNA</button>
-            <p style={styles.formNote}>Submitting opens your email app with the message addressed to contact@elorna.net.</p>
+            <p style={styles.formNote}>Your message is sent securely to contact@elorna.net. No email app will open.</p>
           </form>
 
           <div style={styles.contactGrid}>
