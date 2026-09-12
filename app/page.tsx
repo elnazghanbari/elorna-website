@@ -217,10 +217,20 @@ export default function Home() {
       {/* USP */}
       <section style={styles.uspSection}>
         <p style={styles.kicker} className="micro-kicker">WHY ELORNA</p>
-        <h2 style={styles.uspTitle}>One journey. Fewer disconnected tools.</h2>
+        <h2 style={styles.uspTitle}>One AI-powered system to build, sell and grow — without stitching together disconnected tools.</h2>
         <p style={styles.uspText}>
-          Unlike standalone AI tools that solve isolated tasks, ELORNA connects strategy, building, selling and growth in one founder-controlled system.
+          Unlike isolated AI apps, ELORNA connects the full founder journey in one coherent environment — with human approval at every important step.
         </p>
+        <div style={styles.positioningGrid}>
+          <div className="premium-panel language-premium" style={styles.positioningCard}>
+            <span style={styles.goodLabel}>POSITIONING</span>
+            <p style={styles.languageWords}>AI-powered business operating system for founders and small businesses.</p>
+          </div>
+          <div className="premium-panel language-premium" style={styles.positioningCard}>
+            <span style={styles.goodLabel}>CORE PROMISE</span>
+            <p style={styles.languageWords}>One connected infrastructure for building, selling and growing — with AI assistance and founder control.</p>
+          </div>
+        </div>
         <div style={styles.uspBadge}>AI-assisted • Human-approved • Connected by design</div>
       </section>
 
@@ -437,12 +447,12 @@ export default function Home() {
         </div>
         <div style={styles.languageGrid}>
           <div className="premium-panel language-premium" style={styles.languageCard}>
-            <span style={styles.goodLabel}>USE</span>
-            <p style={styles.languageWords}>clarity • connected • precise • useful • responsible • founder-controlled</p>
+            <span style={styles.goodLabel}>ALLOWED WORDS</span>
+            <p style={styles.languageWords}>opportunity • clarity • connected • precise • responsible • useful</p>
           </div>
-          <div style={styles.languageCard}>
-            <span style={styles.avoidLabel}>AVOID</span>
-            <p style={styles.languageWords}>no hype • no false guarantees • no risk-free claims • no fabricated outcomes</p>
+          <div className="premium-panel language-premium" style={styles.languageCard}>
+            <span style={styles.avoidLabel}>FORBIDDEN WORDS</span>
+            <p style={styles.languageWords}>guarantee • revolutionary • disrupt • risk-free • certain • guaranteed</p>
           </div>
         </div>
       </section>
@@ -516,7 +526,7 @@ export default function Home() {
         </div>
 
         <div style={styles.footerLinks} className="footer-lux-links">
-          <a href="https://elorna.net">elorna.net</a>
+          <a href="https://elorna.net">ELORNA.NET</a>
           <a href="mailto:contact@elorna.net">contact@elorna.net</a>
           <a href="mailto:support@elorna.net">support@elorna.net</a>
           <a href="https://www.linkedin.com/company/elorna" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -1155,6 +1165,18 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#aab1b8",
     fontSize: 18,
     lineHeight: 1.8,
+  },
+  positioningGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 16,
+    marginTop: 34,
+    textAlign: "left",
+  },
+  positioningCard: {
+    padding: 24,
+    border: border,
+    background: "rgba(7,14,21,.82)",
   },
   uspBadge: {
     display: "inline-block",
