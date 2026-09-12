@@ -254,7 +254,7 @@ export default function Home() {
       {/* BUSINESS JOURNEY */}
       <section id="journey" style={styles.journey}>
         {businessStages.map((stage) => (
-          <div key={stage.number} style={styles.stage}>
+          <div key={stage.number} className="premium-panel stage-premium" style={styles.stage}>
             <span style={styles.stageNumber}>{stage.number}</span>
             <h3 style={styles.stageTitle}>{stage.title}</h3>
             <p style={styles.stageText}>{stage.text}</p>
@@ -372,7 +372,7 @@ export default function Home() {
         </div>
         <div style={styles.proofFlow}>
           {["01 Idea & context","02 Positioning & offer","03 Launch plan","04 Sales journey","05 Measure & improve"].map((step) => (
-            <span key={step} style={styles.proofStep}>{step}</span>
+            <span key={step} className="premium-panel proof-step-premium" style={styles.proofStep}>{step}</span>
           ))}
         </div>
       </section>
@@ -383,7 +383,7 @@ export default function Home() {
           <p style={styles.kicker} className="micro-kicker">FOUNDER-LED</p>
           <h2 style={styles.founderTitle}>Built with accountability, clarity and founder control.</h2>
         </div>
-        <div style={styles.founderCard}>
+        <div className="premium-panel founder-premium" style={styles.founderCard}>
           <span style={styles.contactLabel} className="micro-label">FOUNDER</span>
           <strong style={styles.founderName}>Elnaz Ghanbari</strong>
           <p style={styles.founderText}>
@@ -433,16 +433,16 @@ export default function Home() {
       <section style={styles.languageSection}>
         <div>
           <p style={styles.kicker} className="micro-kicker">HOW ELORNA COMMUNICATES</p>
-          <h2 style={styles.languageTitle}>Clear words. Credible promises.</h2>
+          <h2 style={styles.languageTitle}>Clarity you can build on.</h2>
         </div>
         <div style={styles.languageGrid}>
-          <div style={styles.languageCard}>
+          <div className="premium-panel language-premium" style={styles.languageCard}>
             <span style={styles.goodLabel}>USE</span>
-            <p style={styles.languageWords}>clarity • opportunity • connected • useful • responsible • founder-controlled</p>
+            <p style={styles.languageWords}>clarity • connected • precise • useful • responsible • founder-controlled</p>
           </div>
           <div style={styles.languageCard}>
             <span style={styles.avoidLabel}>AVOID</span>
-            <p style={styles.languageWords}>guarantee • revolutionary • disrupt • risk-free • guaranteed funding • guaranteed profit</p>
+            <p style={styles.languageWords}>no hype • no false guarantees • no risk-free claims • no fabricated outcomes</p>
           </div>
         </div>
       </section>
@@ -451,14 +451,15 @@ export default function Home() {
       <section id="contact" style={styles.contactSection}>
         <div style={styles.contactIntro}>
           <p style={styles.kicker} className="micro-kicker">CONTACT ELORNA</p>
-          <h2 style={styles.contactTitle}>One official identity. Clear ways to reach us.</h2>
+          <h2 style={styles.contactTitle}>Start a serious conversation with ELORNA.</h2>
           <p style={styles.contactText}>
-            Tell us what you are building, where you are stuck and what kind of support you are looking for. The form opens a prepared email to our official contact inbox.
+            Tell us what you are building, where you are stuck and what a stronger next step would look like. Your message goes directly to ELORNA’s official contact route.
           </p>
         </div>
 
         <div style={styles.contactLayout}>
           <form
+            className="premium-panel premium-form"
             action="mailto:contact@elorna.net?subject=ELORNA%20website%20inquiry"
             method="post"
             encType="text/plain"
@@ -481,15 +482,15 @@ export default function Home() {
           </form>
 
           <div style={styles.contactGrid}>
-            <a href="mailto:contact@elorna.net" className="contact-card-link" style={styles.contactCard}>
+            <a href="mailto:contact@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
               <span style={styles.contactLabel} className="micro-label">GENERAL CONTACT</span>
               <strong style={styles.contactValue}>contact@elorna.net</strong>
             </a>
-            <a href="mailto:elnaz@elorna.net" className="contact-card-link" style={styles.contactCard}>
+            <a href="mailto:elnaz@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
               <span style={styles.contactLabel} className="micro-label">FOUNDER</span>
               <strong style={styles.contactValue}>elnaz@elorna.net</strong>
             </a>
-            <a href="mailto:support@elorna.net" className="contact-card-link" style={styles.contactCard}>
+            <a href="mailto:support@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
               <span style={styles.contactLabel} className="micro-label">SUPPORT</span>
               <strong style={styles.contactValue}>support@elorna.net</strong>
             </a>
@@ -1048,7 +1049,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   contactText: {
     color: "#aab1b8",
-    fontSize: 17,
+    fontSize: 19,
     lineHeight: 1.75,
   },
   contactLayout: {
@@ -1125,14 +1126,14 @@ const styles: Record<string, React.CSSProperties> = {
   },
   contactLabel: {
     color: "#86704e",
-    fontSize: 11,
-    letterSpacing: 2,
+    fontSize: 12,
+    letterSpacing: 2.2,
   },
   contactValue: {
     color: "#e8bd70",
     fontFamily: "'Cormorant Garamond', Georgia, serif",
-    fontSize: 20,
-    fontWeight: 400,
+    fontSize: 24,
+    fontWeight: 500,
   },
   uspSection: {
     maxWidth: 1100,
@@ -1257,7 +1258,7 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "12px 0 0",
     color: "#aab1b8",
     lineHeight: 1.7,
-    fontSize: 14,
+    fontSize: 16,
   },
   footerFine: {
     display: "inline-block",
