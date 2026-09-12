@@ -728,7 +728,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   heroTitle: {
     fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
-    fontSize: "clamp(54px, 7vw, 105px)",
+    fontSize: "clamp(46px, 6vw, 88px)",
     lineHeight: 0.95,
     letterSpacing: -3,
     margin: "0 0 30px",
