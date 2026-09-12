@@ -16,8 +16,8 @@ const businessStages = [
   },
   {
     number: "04",
-    title: "INVEST",
-    text: "Prepare growth-ready businesses for future capital opportunities.",
+    title: "CAPITAL",
+    text: "Build stronger business fundamentals and prepare for future capital opportunities — without promises of funding or investment outcomes.",
   },
 ];
 
@@ -53,9 +53,9 @@ const showcase = [
     image: "/grow.jpg",
   },
   {
-    eyebrow: "04 / INVEST",
+    eyebrow: "04 / CAPITAL",
     title: "Prepare for the next level.",
-    text: "Build stronger business fundamentals and become better prepared for future investment conversations.",
+    text: "Build stronger business fundamentals and prepare for future capital conversations. ELORNA provides readiness tools and information, not investment advice, brokerage or guaranteed funding.",
     image: "/invest.jpg",
   },
   {
@@ -82,8 +82,8 @@ const pillars = [
     text: "A connected operating path from idea and launch to sustainable growth.",
   },
   {
-    title: "INVESTMENT ACCESS",
-    text: "Better preparation for future capital opportunities and conversations.",
+    title: "CAPITAL READINESS",
+    text: "Tools and structure that help founders prepare for future capital opportunities and conversations."
   },
   {
     title: "GLOBAL VISION",
@@ -142,9 +142,7 @@ export default function Home() {
           </h1>
 
           <p style={styles.heroText}>
-            ELORNA is an AI-powered business ecosystem designed to help
-            ambitious founders move from idea to launch, sales and growth
-            through one connected journey.
+            ELORNA is an AI-powered business operating system for founders who want one connected path from idea to launch, sales and growth — without stitching together disconnected tools.
           </p>
 
           <div style={styles.heroButtons}>
@@ -171,6 +169,16 @@ export default function Home() {
             style={styles.heroImage}
           />
         </div>
+      </section>
+
+      {/* USP */}
+      <section style={styles.uspSection}>
+        <p style={styles.kicker}>WHY ELORNA</p>
+        <h2 style={styles.uspTitle}>One journey. Fewer disconnected tools.</h2>
+        <p style={styles.uspText}>
+          Unlike standalone AI tools that solve isolated tasks, ELORNA connects strategy, building, selling and growth in one founder-controlled system.
+        </p>
+        <div style={styles.uspBadge}>AI-assisted • Human-approved • Connected by design</div>
       </section>
 
       {/* PILLARS */}
@@ -305,6 +313,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FOUNDER & TRUST */}
+      <section style={styles.founderSection}>
+        <div>
+          <p style={styles.kicker}>FOUNDER-LED</p>
+          <h2 style={styles.founderTitle}>Built with accountability, clarity and founder control.</h2>
+        </div>
+        <div style={styles.founderCard}>
+          <span style={styles.contactLabel}>FOUNDER</span>
+          <strong style={styles.founderName}>Elnaz Ghanbari</strong>
+          <p style={styles.founderText}>
+            ELORNA is being built as a practical, responsible AI business ecosystem. Recommendations remain assistive: founders review important decisions and stay in control.
+          </p>
+          <a href="mailto:elnaz@elorna.net" style={styles.founderLink}>elnaz@elorna.net</a>
+        </div>
+      </section>
+
+      {/* CAPITAL NOTICE */}
+      <section style={styles.noticeSection}>
+        <p style={styles.noticeText}>
+          <strong>Capital notice:</strong> ELORNA may provide general readiness tools, educational information and introductions. It does not guarantee funding, profit, investment performance or approval, and does not present itself as a regulated investment adviser or broker.
+        </p>
+      </section>
+
       {/* FINAL CTA */}
       <section id="start" style={styles.cta}>
         <div style={styles.ctaGlow} />
@@ -332,6 +363,24 @@ export default function Home() {
         <a href="mailto:contact@elorna.net" style={styles.ctaButton}>
           START WITH ELORNA
         </a>
+      </section>
+
+      {/* TRUST LANGUAGE */}
+      <section style={styles.languageSection}>
+        <div>
+          <p style={styles.kicker}>HOW ELORNA COMMUNICATES</p>
+          <h2 style={styles.languageTitle}>Clear words. Credible promises.</h2>
+        </div>
+        <div style={styles.languageGrid}>
+          <div style={styles.languageCard}>
+            <span style={styles.goodLabel}>USE</span>
+            <p style={styles.languageWords}>clarity • opportunity • connected • useful • responsible • founder-controlled</p>
+          </div>
+          <div style={styles.languageCard}>
+            <span style={styles.avoidLabel}>AVOID</span>
+            <p style={styles.languageWords}>guarantee • revolutionary • disrupt • risk-free • guaranteed funding • guaranteed profit</p>
+          </div>
+        </div>
       </section>
 
       {/* CONTACT */}
@@ -385,7 +434,8 @@ export default function Home() {
         </div>
 
         <div style={styles.footerRight}>
-          © 2026 ELORNA. All rights reserved.
+          © 2026 ELORNA. All rights reserved.<br />
+          <span style={styles.footerFine}>AI-assisted. Human-approved. No guaranteed commercial or investment outcomes.</span>
         </div>
       </footer>
     </main>
@@ -874,6 +924,138 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "Georgia, serif",
     fontSize: 20,
     fontWeight: 400,
+  },
+  uspSection: {
+    maxWidth: 1100,
+    margin: "0 auto",
+    padding: "95px 6%",
+    textAlign: "center",
+    borderBottom: border,
+  },
+  uspTitle: {
+    fontFamily: "Georgia, serif",
+    fontSize: "clamp(42px,5vw,72px)",
+    fontWeight: 400,
+    lineHeight: 1.06,
+    margin: "0 0 22px",
+  },
+  uspText: {
+    maxWidth: 850,
+    margin: "0 auto",
+    color: "#aab1b8",
+    fontSize: 18,
+    lineHeight: 1.8,
+  },
+  uspBadge: {
+    display: "inline-block",
+    marginTop: 28,
+    padding: "10px 16px",
+    border: border,
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 12,
+    letterSpacing: 1,
+  },
+  founderSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "110px 6%",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 50,
+    alignItems: "center",
+    borderTop: border,
+  },
+  founderTitle: {
+    fontFamily: "Georgia, serif",
+    fontSize: "clamp(40px,4.6vw,68px)",
+    fontWeight: 400,
+    lineHeight: 1.06,
+    margin: 0,
+  },
+  founderCard: {
+    padding: 32,
+    border: border,
+    background: "rgba(7,14,21,.82)",
+  },
+  founderName: {
+    display: "block",
+    color: "#e8bd70",
+    fontFamily: "Georgia, serif",
+    fontSize: 28,
+    fontWeight: 400,
+    margin: "14px 0",
+  },
+  founderText: {
+    color: "#aab1b8",
+    lineHeight: 1.75,
+    fontSize: 15,
+  },
+  founderLink: {
+    color: "#e8bd70",
+    textDecoration: "none",
+    fontSize: 14,
+  },
+  noticeSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "0 6% 100px",
+  },
+  noticeText: {
+    margin: 0,
+    padding: 24,
+    border: "1px solid rgba(214,163,74,.18)",
+    background: "rgba(214,163,74,.04)",
+    color: "#9da5ad",
+    lineHeight: 1.7,
+    fontSize: 13,
+  },
+  languageSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "90px 6%",
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  languageTitle: {
+    fontFamily: "Georgia, serif",
+    fontSize: "clamp(38px,4vw,58px)",
+    fontWeight: 400,
+    margin: "0 0 32px",
+  },
+  languageGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 16,
+  },
+  languageCard: {
+    padding: 24,
+    border: border,
+    background: "rgba(7,14,21,.82)",
+  },
+  goodLabel: {
+    color: "#e8bd70",
+    fontSize: 11,
+    letterSpacing: 2,
+    fontWeight: 700,
+  },
+  avoidLabel: {
+    color: "#a6adb4",
+    fontSize: 11,
+    letterSpacing: 2,
+    fontWeight: 700,
+  },
+  languageWords: {
+    margin: "12px 0 0",
+    color: "#aab1b8",
+    lineHeight: 1.7,
+    fontSize: 14,
+  },
+  footerFine: {
+    display: "inline-block",
+    marginTop: 5,
+    color: "#5f6870",
+    fontSize: 10,
+    lineHeight: 1.5,
   },
   footerLinks: {
     display: "flex",
