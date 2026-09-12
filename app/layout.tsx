@@ -11,6 +11,11 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/elorna-emblem.jpg",
+    shortcut: "/elorna-emblem.jpg",
+    apple: "/elorna-emblem.jpg",
+  },
   openGraph: {
     title: "ELORNA — AI Business Operating System",
     description:
@@ -18,7 +23,14 @@ export const metadata = {
     url: "https://elorna.net",
     siteName: "ELORNA",
     type: "website",
-    images: ["/elorna-vision.jpg"],
+    images: [
+      {
+        url: "/elorna-vision.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ELORNA — AI Business Operating System",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
