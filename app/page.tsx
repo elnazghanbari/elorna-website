@@ -103,9 +103,43 @@ const pillars = [
   },
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://elorna.net/#organization",
+      name: "ELORNA",
+      url: "https://elorna.net",
+      logo: "https://elorna.net/elorna-emblem.jpg",
+      email: "contact@elorna.net",
+      founder: {
+        "@type": "Person",
+        name: "Elnaz Ghanbari",
+      },
+      sameAs: [
+        "https://www.linkedin.com/company/elorna",
+        "https://www.instagram.com/elorna.official",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://elorna.net/#website",
+      url: "https://elorna.net",
+      name: "ELORNA",
+      publisher: { "@id": "https://elorna.net/#organization" },
+      inLanguage: "en",
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <main style={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* NAVIGATION */}
       <header style={styles.nav}>
         <a href="#top" style={styles.brand}>
@@ -117,26 +151,23 @@ export default function Home() {
           <span>ELORNA</span>
         </a>
 
-        <nav style={styles.navLinks}>
-          <a href="#platform" style={styles.navLink}>
-            Platform
-          </a>
-          <a href="#journey" style={styles.navLink}>
-            Journey
-          </a>
-          <a href="#ai" style={styles.navLink}>
-            AI
-          </a>
-          <a href="#vision" style={styles.navLink}>
-            Vision
-          </a>
-          <a href="#contact" style={styles.navLink}>
-            Contact
-          </a>
+        <nav style={styles.navLinks} aria-label="Primary navigation">
+          {[
+            ["01", "Platform", "#platform"],
+            ["02", "Journey", "#journey"],
+            ["03", "AI", "#ai"],
+            ["04", "Vision", "#vision"],
+            ["05", "Contact", "#contact"],
+          ].map(([number, label, href]) => (
+            <a key={label} href={href} className="nav-lux-link" style={styles.navLink}>
+              <span className="nav-lux-number">{number}</span>
+              <span className="nav-lux-label">{label}</span>
+            </a>
+          ))}
         </nav>
 
-        <a href="#contact" style={styles.navButton}>
-          Start Building
+        <a href="#contact" className="nav-lux-cta" style={styles.navButton}>
+          <span>Start Building</span><span aria-hidden="true">→</span>
         </a>
       </header>
 
@@ -145,7 +176,7 @@ export default function Home() {
         <div style={styles.heroGlow} />
 
         <div style={styles.heroContent}>
-          <p style={styles.kicker}>AI • IT • BUSINESS • FUTURE</p>
+          <p style={styles.kicker} className="micro-kicker">AI • IT • BUSINESS • FUTURE</p>
 
           <h1 style={styles.heroTitle}>
             Build the business.
@@ -158,19 +189,19 @@ export default function Home() {
           </p>
 
           <div style={styles.heroButtons}>
-            <a href="#platform" style={styles.primaryButton}>
+            <a href="#platform" className="lux-button lux-button-primary" style={styles.primaryButton}>
               Explore ELORNA
             </a>
 
-            <a href="#journey" style={styles.secondaryButton}>
+            <a href="#journey" className="lux-button lux-button-secondary" style={styles.secondaryButton}>
               How it works
             </a>
           </div>
 
           <div style={styles.badges}>
-            <span style={styles.badge}>AI-Powered</span>
-            <span style={styles.badge}>Founder-Focused</span>
-            <span style={styles.badge}>Growth-Oriented</span>
+            <span style={styles.badge} className="micro-badge">AI-Powered</span>
+            <span style={styles.badge} className="micro-badge">Founder-Focused</span>
+            <span style={styles.badge} className="micro-badge">Growth-Oriented</span>
           </div>
         </div>
 
@@ -185,7 +216,7 @@ export default function Home() {
 
       {/* USP */}
       <section style={styles.uspSection}>
-        <p style={styles.kicker}>WHY ELORNA</p>
+        <p style={styles.kicker} className="micro-kicker">WHY ELORNA</p>
         <h2 style={styles.uspTitle}>One journey. Fewer disconnected tools.</h2>
         <p style={styles.uspText}>
           Unlike standalone AI tools that solve isolated tasks, ELORNA connects strategy, building, selling and growth in one founder-controlled system.
@@ -205,7 +236,7 @@ export default function Home() {
 
       {/* INTRO */}
       <section style={styles.intro}>
-        <p style={styles.kicker}>THE ELORNA SYSTEM</p>
+        <p style={styles.kicker} className="micro-kicker">THE ELORNA SYSTEM</p>
 
         <h2 style={styles.sectionTitle}>
           One infrastructure.
@@ -230,7 +261,7 @@ export default function Home() {
             <div style={styles.stageMeta}>
               <p style={styles.stageMetaText}><strong>Best for:</strong> {stage.bestFor}</p>
               <p style={styles.stageMetaText}>{stage.example}</p>
-              <span style={styles.engagement}>{stage.engagement}</span>
+              <span style={styles.engagement} className="micro-pill">{stage.engagement}</span>
             </div>
           </div>
         ))}
@@ -265,7 +296,7 @@ export default function Home() {
             </div>
 
             <div style={styles.showcaseContent}>
-              <p style={styles.kicker}>{item.eyebrow}</p>
+              <p style={styles.kicker} className="micro-kicker">{item.eyebrow}</p>
               <h2 style={styles.showcaseTitle}>{item.title}</h2>
               <p style={styles.showcaseText}>{item.text}</p>
             </div>
@@ -281,7 +312,7 @@ export default function Home() {
           style={styles.visionLogo}
         />
 
-        <p style={styles.kicker}>OUR VISION</p>
+        <p style={styles.kicker} className="micro-kicker">OUR VISION</p>
 
         <h2 style={styles.visionTitle}>
           Technology should make
@@ -333,7 +364,7 @@ export default function Home() {
       {/* TRANSPARENT PROOF */}
       <section style={styles.proofSection}>
         <div>
-          <p style={styles.kicker}>HOW THE WORK CAN LOOK</p>
+          <p style={styles.kicker} className="micro-kicker">HOW THE WORK CAN LOOK</p>
           <h2 style={styles.proofTitle}>A transparent sample workflow — not a fabricated client result.</h2>
           <p style={styles.proofText}>
             Example: a founder arrives with an early idea. ELORNA can help structure the offer, clarify positioning, build a launch checklist, map a first sales journey and define the measurements to review next. This is a methodology example, not a claim of guaranteed results.
@@ -349,16 +380,16 @@ export default function Home() {
       {/* FOUNDER & TRUST */}
       <section style={styles.founderSection}>
         <div>
-          <p style={styles.kicker}>FOUNDER-LED</p>
+          <p style={styles.kicker} className="micro-kicker">FOUNDER-LED</p>
           <h2 style={styles.founderTitle}>Built with accountability, clarity and founder control.</h2>
         </div>
         <div style={styles.founderCard}>
-          <span style={styles.contactLabel}>FOUNDER</span>
+          <span style={styles.contactLabel} className="micro-label">FOUNDER</span>
           <strong style={styles.founderName}>Elnaz Ghanbari</strong>
           <p style={styles.founderText}>
             Elnaz Ghanbari is the founder of ELORNA. She is building the platform around a practical principle: AI should reduce complexity, explain the next step and keep important business decisions under human control. ELORNA is an early-stage founder-led product, and examples shown on this site are clearly presented as workflows or prototypes rather than invented client results.
           </p>
-          <a href="mailto:elnaz@elorna.net" style={styles.founderLink}>elnaz@elorna.net</a>
+          <a href="mailto:elnaz@elorna.net" className="copper-link" style={styles.founderLink}>elnaz@elorna.net</a>
         </div>
       </section>
 
@@ -379,7 +410,7 @@ export default function Home() {
           style={styles.ctaLogo}
         />
 
-        <p style={styles.kicker}>THE NEXT CHAPTER STARTS HERE</p>
+        <p style={styles.kicker} className="micro-kicker">THE NEXT CHAPTER STARTS HERE</p>
 
         <h2 style={styles.ctaTitle}>
           Are you ready to
@@ -393,7 +424,7 @@ export default function Home() {
           All through one connected vision.
         </p>
 
-        <a href="#contact" style={styles.ctaButton}>
+        <a href="#contact" className="lux-button lux-button-primary" style={styles.ctaButton}>
           START WITH ELORNA
         </a>
       </section>
@@ -401,7 +432,7 @@ export default function Home() {
       {/* TRUST LANGUAGE */}
       <section style={styles.languageSection}>
         <div>
-          <p style={styles.kicker}>HOW ELORNA COMMUNICATES</p>
+          <p style={styles.kicker} className="micro-kicker">HOW ELORNA COMMUNICATES</p>
           <h2 style={styles.languageTitle}>Clear words. Credible promises.</h2>
         </div>
         <div style={styles.languageGrid}>
@@ -419,7 +450,7 @@ export default function Home() {
       {/* CONTACT */}
       <section id="contact" style={styles.contactSection}>
         <div style={styles.contactIntro}>
-          <p style={styles.kicker}>CONTACT ELORNA</p>
+          <p style={styles.kicker} className="micro-kicker">CONTACT ELORNA</p>
           <h2 style={styles.contactTitle}>One official identity. Clear ways to reach us.</h2>
           <p style={styles.contactText}>
             Tell us what you are building, where you are stuck and what kind of support you are looking for. The form opens a prepared email to our official contact inbox.
@@ -450,16 +481,16 @@ export default function Home() {
           </form>
 
           <div style={styles.contactGrid}>
-            <a href="mailto:contact@elorna.net" style={styles.contactCard}>
-              <span style={styles.contactLabel}>GENERAL CONTACT</span>
+            <a href="mailto:contact@elorna.net" className="contact-card-link" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">GENERAL CONTACT</span>
               <strong style={styles.contactValue}>contact@elorna.net</strong>
             </a>
-            <a href="mailto:elnaz@elorna.net" style={styles.contactCard}>
-              <span style={styles.contactLabel}>FOUNDER</span>
+            <a href="mailto:elnaz@elorna.net" className="contact-card-link" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">FOUNDER</span>
               <strong style={styles.contactValue}>elnaz@elorna.net</strong>
             </a>
-            <a href="mailto:support@elorna.net" style={styles.contactCard}>
-              <span style={styles.contactLabel}>SUPPORT</span>
+            <a href="mailto:support@elorna.net" className="contact-card-link" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">SUPPORT</span>
               <strong style={styles.contactValue}>support@elorna.net</strong>
             </a>
           </div>
@@ -483,7 +514,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={styles.footerLinks}>
+        <div style={styles.footerLinks} className="footer-lux-links">
           <a href="https://elorna.net">elorna.net</a>
           <a href="mailto:contact@elorna.net">contact@elorna.net</a>
           <a href="mailto:support@elorna.net">support@elorna.net</a>
@@ -510,7 +541,7 @@ const styles: Record<string, React.CSSProperties> = {
     background:
       "radial-gradient(circle at 50% 0%, #102236 0%, #06101a 28%, #02070d 70%)",
     color: "#f7f3eb",
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "'Manrope', 'Avenir Next', Helvetica, sans-serif",
     overflowX: "hidden",
   },
 
@@ -535,7 +566,7 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 12,
     color: "#e8bd70",
     textDecoration: "none",
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: 23,
     letterSpacing: 6,
   },
@@ -549,23 +580,30 @@ const styles: Record<string, React.CSSProperties> = {
 
   navLinks: {
     display: "flex",
-    gap: 32,
+    gap: 28,
     alignItems: "center",
   },
 
   navLink: {
-    color: "#c9c9c9",
+    color: "#f0e8dd",
     textDecoration: "none",
-    fontSize: 14,
+    fontSize: 17,
+    minWidth: 72,
+    textAlign: "center",
+    position: "relative",
   },
 
   navButton: {
-    color: "#e8bd70",
+    color: "#f0c97c",
     textDecoration: "none",
     border: `1px solid ${gold}`,
-    borderRadius: 30,
-    padding: "11px 20px",
-    fontSize: 13,
+    borderRadius: 999,
+    padding: "12px 22px",
+    fontSize: 14,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 12,
+    letterSpacing: .3,
   },
 
   hero: {
@@ -607,7 +645,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   heroTitle: {
-    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(54px, 7vw, 105px)",
     lineHeight: 0.95,
     letterSpacing: -3,
@@ -692,7 +730,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   pillarTitle: {
     color: gold,
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     letterSpacing: 1,
     fontSize: 18,
   },
@@ -711,7 +749,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   sectionTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontWeight: 400,
     fontSize: "clamp(45px,6vw,82px)",
     lineHeight: 1.05,
@@ -750,7 +788,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   stageTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     color: "#e6bd76",
     fontSize: 30,
     margin: "30px 0 15px",
@@ -828,7 +866,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   showcaseTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontWeight: 400,
     fontSize: "clamp(40px,5vw,68px)",
     lineHeight: 1.05,
@@ -857,7 +895,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   visionTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontWeight: 400,
     fontSize: "clamp(45px,6vw,85px)",
     lineHeight: 1.05,
@@ -931,7 +969,7 @@ const styles: Record<string, React.CSSProperties> = {
 
   ctaTitle: {
     position: "relative",
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontWeight: 400,
     fontSize: "clamp(48px,7vw,90px)",
     lineHeight: 1,
@@ -969,7 +1007,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: border,
   },
   proofTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,60px)",
     fontWeight: 400,
     lineHeight: 1.08,
@@ -1003,7 +1041,7 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 42,
   },
   contactTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,60px)",
     fontWeight: 400,
     margin: "0 0 20px",
@@ -1052,7 +1090,7 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#050b11",
     color: "#f4efe6",
     fontSize: 14,
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "'Manrope', 'Avenir Next', Helvetica, sans-serif",
   },
   formButton: {
     border: 0,
@@ -1092,7 +1130,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   contactValue: {
     color: "#e8bd70",
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: 20,
     fontWeight: 400,
   },
@@ -1104,7 +1142,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderBottom: border,
   },
   uspTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(42px,5vw,72px)",
     fontWeight: 400,
     lineHeight: 1.06,
@@ -1138,7 +1176,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: border,
   },
   founderTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(40px,4.6vw,68px)",
     fontWeight: 400,
     lineHeight: 1.06,
@@ -1152,7 +1190,7 @@ const styles: Record<string, React.CSSProperties> = {
   founderName: {
     display: "block",
     color: "#e8bd70",
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: 28,
     fontWeight: 400,
     margin: "14px 0",
@@ -1188,7 +1226,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderTop: "1px solid rgba(255,255,255,.07)",
   },
   languageTitle: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     fontSize: "clamp(38px,4vw,58px)",
     fontWeight: 400,
     margin: "0 0 32px",
@@ -1259,7 +1297,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   footerName: {
-    fontFamily: "Georgia, serif",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
     color: "#e6bb6d",
     fontSize: 23,
     letterSpacing: 7,
