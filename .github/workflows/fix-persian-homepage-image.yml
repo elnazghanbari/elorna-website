@@ -1,0 +1,47 @@
+name: Fix Persian homepage image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-persian-homepage-image.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix Persian homepage image reference and duplicate
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('app/fa/page.tsx')
+          s = p.read_text()
+
+          # Use the exact image filename that already exists in /public.
+          s = s.replace('/elorna-fa-homepage-png.jpg', '/elorna-fa-homepage.png.jpg')
+
+          # Remove only the accidental second standalone copy after the USP section.
+          pattern = r'''\n<img\n  src="/elorna-fa-homepage\.png\.jpg"\n  alt="معرفی فارسی ELORNA، هوش مصنوعی، ساخت، فروش، رشد و آینده کسب‌وکار"\n  style=\{\{.*?\n/>(?=\s*\{\/\* PILLARS \*\/\})'''
+          s, count = re.subn(pattern, '\n', s, count=1, flags=re.S)
+
+          p.write_text(s)
+          print(f'Removed duplicate image blocks: {count}')
+          PY
+      - name: Commit fix
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/fa/page.tsx
+          git commit -m "Fix Persian homepage image rendering"
+          git push
