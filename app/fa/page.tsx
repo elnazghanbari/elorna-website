@@ -1,39 +1,1425 @@
-const stages = [
-  ["ساخت", "ایده را به یک کسب‌وکار متمرکز تبدیل کنید؛ از استراتژی و جایگاه‌سازی تا هویت برند و برنامه‌ی آماده برای راه‌اندازی.", "قیمت بر اساس پروژه • برآورد پس از یک مشاوره کوتاه"],
-  ["فروش", "مسیر روشن‌تری از پیشنهاد تا مشتری بسازید؛ با سفر مشتری ساختاریافته و نقاط تبدیل قابل‌اندازه‌گیری.", "قیمت بر اساس پروژه • برآورد پس از یک مشاوره کوتاه"],
-  ["رشد", "با داده‌های کسب‌وکار و تحلیل کمک‌گرفته از هوش مصنوعی، گلوگاه‌ها و اولویت‌های رشد را پیدا کنید.", "دامنه کار و برآورد هزینه پیش از شروع مشخص می‌شود"],
-  ["آمادگی سرمایه", "اطلاعات و پایه‌های کسب‌وکار را برای گفت‌وگوهای آینده درباره سرمایه آماده کنید؛ بدون وعده تأمین سرمایه.", "دامنه اختصاصی • برآورد کتبی پس از بررسی اولیه"],
+const businessStages = [
+  {
+    number: "01",
+    title: "BUILD",
+    text: "Turn an idea into a focused business — from strategy and positioning to a launch-ready brand foundation.",
+    bestFor: "Best for early-stage startups and founders who have an idea or early offer but do not yet have a clear positioning, professional brand or launch-ready foundation.",
+    example: "Example deliverable: positioning, brand direction and a practical launch checklist.",
+    engagement: "Pilot access / custom scope",
+  },
+  {
+    number: "02",
+    title: "SELL",
+    text: "Create a clearer route from offer to customer with structured sales journeys, conversion touchpoints and performance tracking.",
+    bestFor: "Best for startups and small businesses that already have an offer or service but need a clearer customer journey, sales structure and path to conversion.",
+    example: "Example workflow: offer review → customer journey → conversion plan → measurement.",
+    engagement: "Request a consultation",
+  },
+  {
+    number: "03",
+    title: "GROW",
+    text: "Use business data, analytics and AI-assisted recommendations to identify bottlenecks, priorities and measurable next steps.",
+    bestFor: "Best for businesses with active customers, traffic or early sales data that want to understand what is working, what is slowing growth and what to improve next.",
+    example: "Example workflow: data review → priority signals → test plan → progress tracking.",
+    engagement: "Pilot access / discovery",
+  },
+  {
+    number: "04",
+    title: "CAPITAL",
+    text: "Organize business fundamentals, readiness information and growth evidence before future capital conversations — without promises of funding or investment outcomes.",
+    bestFor: "Best for more established or growth-stage businesses that want to organize their business fundamentals and become better prepared for future funding or investor conversations.",
+    example: "Example deliverable: readiness checklist, information structure and preparation guidance.",
+    engagement: "Custom scope after discovery",
+  },
 ];
 
 const showcase = [
-  ["چالش", "ابزارهای زیاد، پیچیدگی زیاد.", "کارآفرینان زمان زیادی را میان ابزارها، خدمات و تصمیم‌های جدا از هم از دست می‌دهند. ELORNA این مسیر را یکپارچه می‌کند.", "/problem.jpg"],
-  ["راه‌حل", "یک اکوسیستم هوشمند کسب‌وکار.", "استراتژی، برند، فروش، رشد و هوش مصنوعی در یک مسیر روشن و متصل کنار هم قرار می‌گیرند.", "/our-solution.jpg"],
-  ["ساخت", "از ایده تا راه‌اندازی.", "پیشنهاد، جایگاه و مسیر برند را شفاف کنید و آن‌ها را به یک پایه عملی برای راه‌اندازی تبدیل کنید.", "/build.jpg"],
-  ["فروش", "توجه را به درآمد تبدیل کنید.", "سفر مشتری را طراحی کنید، نقاط تبدیل را مشخص کنید و آنچه بعد اتفاق می‌افتد اندازه‌گیری کنید.", "/sell.jpg"],
-  ["رشد", "رشد را قابل‌اندازه‌گیری کنید.", "داده‌های عملکرد را بررسی کنید و بینش‌های هوش مصنوعی را به آزمایش‌ها و اولویت‌های مشخص تبدیل کنید.", "/grow.jpg"],
-  ["آمادگی سرمایه", "برای مرحله بعد آماده شوید.", "ساختار و شواهد رشد کسب‌وکار را برای گفت‌وگوهای آینده درباره سرمایه آماده کنید. هیچ نتیجه مالی تضمین نمی‌شود.", "/invest.jpg"],
-  ["لایه هوشمند", "هوش مصنوعی در خدمت کسب‌وکار شما.", "کارهای تکراری را کاهش دهید و در عین حال تصمیم‌های مهم را تحت کنترل انسانی نگه دارید.", "/Ai-power.jpg"],
-  ["چشم‌انداز", "امروز بسازید، فردا را شکل دهید.", "زیرساخت هوشمند برای بنیان‌گذارانی که می‌خواهند فراتر از مرزها رشد کنند.", "/future.jpg"],
+  {
+    eyebrow: "THE CHALLENGE",
+    title: "Too many tools. Too much complexity.",
+    text: "Entrepreneurs lose time moving between disconnected tools, services and decisions. Elorna brings the journey together.",
+    image: "/problem.jpg",
+  },
+  {
+    eyebrow: "THE SOLUTION",
+    title: "One intelligent business ecosystem.",
+    text: "Strategy, brand, sales, growth and AI — connected through one clear operating system.",
+    image: "/our-solution.jpg",
+  },
+  {
+    eyebrow: "BUILD",
+    title: "From idea to launch.",
+    text: "For early-stage founders: clarify the offer, positioning and brand direction, then turn them into a practical launch-ready foundation.",
+    image: "/build.jpg",
+  },
+  {
+    eyebrow: "SELL",
+    title: "Turn attention into revenue.",
+    text: "For businesses ready to sell: map the customer journey, define conversion touchpoints and connect the tools needed to measure what happens next.",
+    image: "/sell.jpg",
+  },
+  {
+    eyebrow: "GROW",
+    title: "Make growth measurable.",
+    text: "For businesses with traction: review real performance data, identify bottlenecks and turn AI-assisted insights into focused tests and measurable priorities.",
+    image: "/grow.jpg",
+  },
+  {
+    eyebrow: "CAPITAL",
+    title: "Prepare for the next level.",
+    text: "For growth-stage businesses preparing for future funding or investor conversations: organize business fundamentals, readiness information and growth evidence. ELORNA provides preparation tools and general information, not investment advice, brokerage or guaranteed funding.",
+    image: "/invest.jpg",
+  },
+  {
+    eyebrow: "INTELLIGENCE LAYER",
+    title: "AI that works with your business.",
+    text: "Intelligent assistance, automation and recommendations designed to reduce repetitive work and support better decisions.",
+    image: "/Ai-power.jpg",
+  },
+  {
+    eyebrow: "THE VISION",
+    title: "Build today. Shape tomorrow.",
+    text: "We believe ambitious founders should have access to intelligent infrastructure that helps them build beyond borders.",
+    image: "/future.jpg",
+  },
 ];
 
-const css = `
-:root{--bg:#02070d;--gold:#d6a34a;--text:#f7f3eb;--muted:#b7c1cb;--line:rgba(214,163,74,.22)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg)}
-.fa{direction:rtl;text-align:right;min-height:100vh;color:var(--text);font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif;background:radial-gradient(circle at 50% -10%,#15314a 0,#07131f 26%,#02070d 66%);overflow:hidden}.nav{position:sticky;top:0;z-index:50;min-height:78px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);background:rgba(2,7,13,.86);backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:12px;color:#e8bd70;text-decoration:none;letter-spacing:5px;font:600 23px Georgia,serif;direction:ltr}.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}.navlinks{display:flex;gap:28px}.navlinks a,.secondary{color:#c9d0d7;text-decoration:none;font-size:13px}.navlinks a:hover,.secondary:hover{color:#f0c87e}.actions{display:flex;align-items:center;gap:14px}.lang{color:#e8bd70;text-decoration:none;font-size:12px}.primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border:1px solid #e0b25e;border-radius:999px;background:linear-gradient(135deg,#e3b75f,#a96d20);color:#071019;text-decoration:none;font-weight:800;box-shadow:0 10px 36px rgba(214,163,74,.18);transition:.35s}.primary:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 16px 46px rgba(214,163,74,.32)}
-.hero{min-height:82vh;padding:80px 7%;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:7vw}.heroCopy{animation:rise .9s ease both}.kicker{color:#d8ad61;font-size:11px;letter-spacing:1px;font-weight:800}.hero h1{font:600 clamp(44px,6vw,82px)/1.2 Tahoma,sans-serif;margin:20px 0}.gold{color:#dcb463}.lead{max-width:720px;color:#bdc6cf;font-size:17px;line-height:2}.heroCta{display:flex;align-items:center;gap:20px;margin-top:30px}.visual{position:relative;animation:float 7s ease-in-out infinite}.visual:before{content:"";position:absolute;inset:-10%;background:radial-gradient(circle,rgba(214,163,74,.18),transparent 65%);filter:blur(20px)}.visual img{position:relative;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:34px;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.45);transition:.7s}.visual:hover img{transform:scale(1.025) rotate(-.4deg);filter:brightness(1.08)}
-.section{padding:90px 7%;border-top:1px solid rgba(214,163,74,.12)}.section h2{font:600 clamp(34px,5vw,62px)/1.35 Tahoma,sans-serif;margin:14px 0 20px}.center{text-align:center;max-width:980px;margin:auto}.center .lead{margin-inline:auto}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}.card{background:linear-gradient(145deg,rgba(12,29,44,.88),rgba(4,12,20,.9));border:1px solid var(--line);border-radius:24px;padding:28px;transition:.4s;box-shadow:0 18px 50px rgba(0,0,0,.2)}.card:hover{transform:translateY(-8px);border-color:rgba(224,178,94,.55);box-shadow:0 24px 65px rgba(0,0,0,.34)}.card h3{color:#e6bc70;font-size:22px}.card p{color:#b9c3cc;line-height:2}.price{display:block;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:#e7c98f;font-size:12px;line-height:1.8}
-.show{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center;padding:70px 7%;border-top:1px solid rgba(214,163,74,.1)}.show:nth-child(even) .pic{order:2}.pic{overflow:hidden;border-radius:28px;border:1px solid var(--line);box-shadow:0 28px 70px rgba(0,0,0,.35)}.pic img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .7s}.pic:hover img{transform:scale(1.07);filter:contrast(1.05) brightness(1.06)}.show h2{font:600 clamp(32px,4vw,54px)/1.4 Tahoma,sans-serif;margin:12px 0}.show p{color:#b9c3cc;line-height:2}.proof{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}.proofFlow{display:grid;gap:12px}.proofStep{padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:rgba(8,22,34,.75);transition:.3s}.proofStep:hover{transform:translateX(-8px);border-color:#d6a34a}.notice{margin-top:24px;color:#95a4b2;font-size:13px;line-height:2}.founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px}.founderCard strong{display:block;font-size:30px;color:#efc97e;margin-bottom:14px}.founderCard a{color:#e0b25e}.cta{text-align:center;padding:110px 7%;background:radial-gradient(circle at 50% 50%,rgba(38,77,105,.35),transparent 60%)}.cta h2{font:600 clamp(40px,6vw,70px)/1.4 Tahoma,sans-serif}.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}.form{display:grid;gap:14px}.form input,.form textarea{width:100%;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:#04101a;color:white;font:inherit;text-align:right;direction:rtl}.form textarea{min-height:140px;resize:vertical}.form button{border:0;cursor:pointer}.footer{padding:35px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:#82909c;font-size:12px}.footer a{color:#d8ad61;text-decoration:none}
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}@media(max-width:900px){.navlinks{display:none}.hero,.show,.proof,.founder,.contact{grid-template-columns:1fr}.hero{padding-top:55px}.show:nth-child(even) .pic{order:0}.grid4{grid-template-columns:1fr 1fr}.footer{flex-direction:column}}@media(max-width:560px){.nav{padding:0 4%}.brand{font-size:18px}.nav .primary{display:none}.hero,.section,.show{padding-left:5%;padding-right:5%}.grid4{grid-template-columns:1fr}.heroCta{align-items:flex-start;flex-direction:column}}
-`;
+const pillars = [
+  {
+    title: "AI POWER",
+    text: "Intelligent systems designed to support founders and businesses.",
+  },
+  {
+    title: "BUSINESS GROWTH",
+    text: "A connected operating path from idea and launch to sustainable growth.",
+  },
+  {
+    title: "CAPITAL READINESS",
+    text: "Tools and structure that help founders prepare for future capital opportunities and conversations."
+  },
+  {
+    title: "جهانی VISION",
+    text: "Built for ambitious businesses that think beyond one market.",
+  },
+];
 
-export default function PersianHome(){return <main className="fa" dir="rtl" lang="fa"><style dangerouslySetInnerHTML={{__html:css}}/>
-<header className="nav"><a className="brand" href="#top"><img src="/elorna-emblem.jpg" alt="نشان طلایی ELORNA"/><span>ELORNA</span></a><nav className="navlinks" aria-label="ناوبری اصلی"><a href="#system">سیستم</a><a href="#journey">مسیر</a><a href="#proof">اعتماد</a><a href="#contact">تماس</a></nav><div className="actions"><a className="lang" href="/" lang="en">EN</a><a className="lang" href="/sv" lang="sv">SV</a><a className="primary" href="#contact">شروع همکاری ←</a></div></header>
-<section className="hero" id="top"><div className="heroCopy"><div className="kicker">هوش مصنوعی • فناوری • کسب‌وکار • آینده</div><h1>کسب‌وکارت را بساز.<br/><span className="gold">آینده را شکل بده.</span></h1><p className="lead">ELORNA استراتژی، راه‌اندازی، فروش و رشد را در یک مسیر یکپارچه و کمک‌گرفته از هوش مصنوعی به هم متصل می‌کند؛ تا بنیان‌گذار بداند قدم بعدی چیست و مجبور نباشد میان ده‌ها ابزار پراکنده سرگردان شود.</p><div className="heroCta"><a className="primary" href="#contact">شروع همکاری ←</a><a className="secondary" href="#journey">نحوه کار را ببینید ↓</a></div></div><div className="visual"><img src="/elorna-fa-overview.jpg" alt="چشم‌انداز ELORNA برای اکوسیستم یکپارچه کسب‌وکار با کمک هوش مصنوعی"/></div></section>
-<section className="section center" id="system"><div className="kicker">چرا ELORNA؟</div><h2>یک مسیر یکپارچه.<br/><span className="gold">کنترل در دست بنیان‌گذار.</span></h2><p className="lead">استراتژی، اجرا و رشد در یک سیستم منسجم کنار هم قرار می‌گیرند. هوش مصنوعی از کار پشتیبانی می‌کند، اما تصمیم‌های مهم کسب‌وکار با تأیید انسان انجام می‌شوند.</p></section>
-<section className="section" id="journey"><div className="center"><div className="kicker">مسیر ELORNA</div><h2>بسازید. بفروشید. رشد کنید. آماده شوید.</h2><p className="lead">به‌جای عبارت‌های مبهم، دامنه کار و برآورد هزینه قبل از شروع همکاری پولی شفاف می‌شود.</p></div><div className="grid4">{stages.map(([title,text,price])=><article className="card" key={title}><h3>{title}</h3><p>{text}</p><span className="price">{price}</span></article>)}</div></section>
-<section>{showcase.map(([eyebrow,title,text,image])=><article className="show" key={title}><div className="pic"><img src={image} alt={`${title} — تصویر بخش ${eyebrow} در ELORNA`}/></div><div><div className="kicker">{eyebrow}</div><h2>{title}</h2><p>{text}</p></div></article>)}</section>
-<section className="section proof" id="proof"><div><div className="kicker">اعتماد شفاف</div><h2>کار را نشان می‌دهیم؛<br/><span className="gold">نتیجه ساختگی نمی‌سازیم.</span></h2><p className="lead">ELORNA در مرحله آغازین است. تا زمانی که نتایج تأییدشده مشتریان واقعی در دسترس باشد، روش کار را شفاف نشان می‌دهیم و از نظر یا نتیجه جعلی و وعده تضمینی استفاده نمی‌کنیم.</p><p className="notice">با شکل‌گیری همکاری‌های پایلوت واقعی و دریافت اجازه برای انتشار بازخورد، این بخش با شواهد تأییدشده تکمیل خواهد شد.</p></div><div className="proofFlow">{["۰۱ — ایده و شرایط کسب‌وکار","۰۲ — جایگاه و پیشنهاد","۰۳ — برنامه راه‌اندازی","۰۴ — مسیر فروش","۰۵ — اندازه‌گیری و بهبود"].map(x=><div className="proofStep" key={x}>{x}</div>)}</div></section>
-<section className="section founder"><div><div className="kicker">بنیان‌گذارمحور</div><h2>پشت ELORNA یک انسان واقعی است.</h2></div><div className="card founderCard"><strong>الناز قنبری — Elnaz Ghanbari</strong><p>بنیان‌گذار ELORNA و مسئول جهت محصول، سیستم برند و تجربه بنیان‌گذار. اصل طراحی ELORNA ساده است: هوش مصنوعی باید پیچیدگی را کمتر کند، قدم بعدی را روشن‌تر سازد و تصمیم‌های مهم را تحت کنترل انسان نگه دارد.</p><a href="mailto:elnaz@elorna.net">elnaz@elorna.net</a></div></section>
-<section className="cta"><div className="kicker">فصل بعدی از اینجا شروع می‌شود</div><h2>آماده‌اید با<br/><span className="gold">شفافیت بیشتری بسازید؟</span></h2><p className="lead" style={{margin:"0 auto 30px"}}>برای ELORNA بنویسید چه چیزی می‌سازید. گفت‌وگوی اول برای روشن‌شدن تناسب همکاری، دامنه کار و قدم عملی بعدی است.</p><a className="primary" href="#contact">شروع همکاری ←</a></section>
-<section className="section contact" id="contact"><div><div className="kicker">تماس با ELORNA</div><h2>یک گفت‌وگوی جدی را شروع کنید.</h2><p className="lead">قیمت بر اساس دامنه پروژه تعیین می‌شود. برای دریافت برآورد روشن پیش از شروع کار، درخواست مشاوره بفرستید.</p><p><a className="secondary" href="mailto:contact@elorna.net">contact@elorna.net</a></p></div><form className="card form" action="https://formsubmit.co/contact@elorna.net" method="POST"><input type="hidden" name="_subject" value="New ELORNA Persian website inquiry"/><input type="hidden" name="_captcha" value="false"/><input type="hidden" name="_next" value="https://elorna.net/thank-you"/><input name="name" required placeholder="نام شما" aria-label="نام شما"/><input name="email" type="email" required placeholder="ایمیل" aria-label="ایمیل"/><textarea name="message" required placeholder="چه چیزی می‌سازید و در کدام بخش به کمک نیاز دارید؟" aria-label="پیام"/><button className="primary" type="submit">ارسال برای ELORNA ←</button></form></section>
-<footer className="footer"><span>© ۲۰۲۶ ELORNA • با کمک هوش مصنوعی • با تأیید انسان</span><span><a href="mailto:support@elorna.net">support@elorna.net</a> · <a href="https://www.linkedin.com/company/elorna">LinkedIn</a> · <a href="https://www.instagram.com/elorna.official">Instagram</a></span></footer>
-</main>}
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://elorna.net/#organization",
+      name: "ELORNA",
+      url: "https://elorna.net",
+      logo: "https://elorna.net/elorna-emblem.jpg",
+      email: "contact@elorna.net",
+      founder: {
+        "@type": "Person",
+        name: "Elnaz Ghanbari",
+      },
+      sameAs: [
+        "https://www.linkedin.com/company/elorna",
+        "https://www.instagram.com/elorna.official",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://elorna.net/#website",
+      url: "https://elorna.net",
+      name: "ELORNA",
+      publisher: { "@id": "https://elorna.net/#organization" },
+      inLanguage: "fa",
+    },
+  ],
+};
+
+export default function Home() {
+  return (
+    <main style={styles.page} dir="rtl">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      {/* NAVIGATION */}
+      <header style={styles.nav}>
+        <a href="#top" style={styles.brand}>
+          <img
+            src="/elorna-emblem.jpg"
+            alt="Elorna emblem"
+            style={styles.brandIcon}
+          />
+          <span>ELORNA</span>
+        </a>
+
+        <nav style={styles.navLinks} aria-label="Primary navigation">
+          {[
+            ["پلتفرم", "#platform"],
+            ["مسیر", "#journey"],
+            ["AI", "#ai"],
+            ["چشم‌انداز", "#vision"],
+            ["تماس", "#contact"],
+          ].map(([label, href]) => (
+            <a key={label} href={href} className="nav-lux-link" style={styles.navLink}>
+              <span className="nav-lux-label">{label}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div style={styles.navActions}>
+          <details className="language-menu" style={styles.languageMenu}>
+            <summary aria-label="Choose language" style={styles.languageSummary}>
+              <span aria-hidden="true">◎</span><span>FA</span>
+            </summary>
+            <div className="language-dropdown" style={styles.languageDropdown}>
+              <a href="/" className="language-option" lang="en">English</a>
+              <a href="/sv" className="language-option" lang="sv">Svenska</a>
+              <a href="/fa" className="language-option" lang="fa" dir="rtl">فارسی</a>
+            </div>
+          </details>
+          <a href="#contact" className="nav-lux-cta" style={styles.navButton} aria-label="Start building with ELORNA">
+            <span>شروع ساخت</span><span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section id="top" style={styles.hero}>
+        <div style={styles.heroGlow} />
+
+        <div style={styles.heroContent}>
+          <p style={styles.kicker} className="micro-kicker">هوش مصنوعی • فناوری • کسب‌وکار • آینده</p>
+
+          <h1 style={styles.heroTitle}>
+            کسب‌وکارت را بساز.
+            <br />
+            <span style={styles.goldText}>آینده را شکل بده.</span>
+          </h1>
+
+          <p style={styles.heroText}>
+            For founders and small businesses building a serious digital business: ELORNA connects strategy, launch, sales and growth in one AI-assisted path — so you know what to do next, which tools support it and what progress to measure.
+          </p>
+
+          <div style={styles.heroButtons}>
+            <a href="#platform" className="lux-button lux-button-primary" style={styles.primaryButton}>
+              Explore ELORNA
+            </a>
+
+            <a href="#journey" className="lux-button lux-button-secondary" style={styles.secondaryButton}>
+              How it works
+            </a>
+          </div>
+
+          <div style={styles.badges}>
+            <span style={styles.badge} className="micro-badge">قدرت‌گرفته از هوش مصنوعی</span>
+            <span style={styles.badge} className="micro-badge">متمرکز بر بنیان‌گذار</span>
+            <span style={styles.badge} className="micro-badge">متمرکز بر رشد</span>
+          </div>
+        </div>
+
+        <div style={styles.heroVisual}>
+          <img
+            src="/elorna-vision.jpg"
+            alt="Elorna vision"
+            style={styles.heroImage}
+          />
+        </div>
+      </section>
+
+      {/* USP */}
+      <section style={styles.uspSection}>
+        <p style={styles.kicker} className="micro-kicker">چرا ELORNA</p>
+        <span style={styles.goodLabel}>USP — پیشنهاد ارزش منحصربه‌فرد</span>
+        <h2 style={styles.uspTitle}>برخلاف ابزارهای پراکنده‌ی هوش مصنوعی و کسب‌وکار، ELORNA مسیر بنیان‌گذار را از ایده تا راه‌اندازی، فروش و رشد در یک اکوسیستم یکپارچه و مجهز به هوش مصنوعی متصل می‌کند.</h2>
+        <p style={styles.uspText}>
+          One connected journey instead of a stack of separate tools — designed to keep founders in control while AI supports the work.
+        </p>
+        <div style={styles.positioningGrid}>
+          <div className="premium-panel language-premium" style={styles.positioningCard}>
+            <span style={styles.goodLabel}>جایگاه برند</span>
+            <p style={styles.languageWords}>ELORNA is an AI-powered business ecosystem for ambitious founders, bringing strategy, execution and growth into one connected journey instead of forcing founders to navigate disconnected tools.</p>
+          </div>
+          <div className="premium-panel language-premium" style={styles.positioningCard}>
+            <span style={styles.goodLabel}>وعده اصلی</span>
+            <p style={styles.languageWords}>یک زیرساخت یکپارچه برای ساخت، فروش و رشد — با کمک هوش مصنوعی و کنترل بنیان‌گذار.</p>
+          </div>
+        </div>
+        <div style={styles.uspBadge}>با کمک هوش مصنوعی • تحت کنترل بنیان‌گذار • یکپارچه از ابتدا</div>
+      </section>
+
+      {/* PILLARS */}
+      <section id="platform" style={styles.pillars}>
+        {pillars.map((pillar) => (
+          <div key={pillar.title} style={styles.pillar}>
+            <p style={styles.pillarTitle}>{pillar.title}</p>
+            <p style={styles.pillarText}>{pillar.text}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* INTRO */}
+      <section style={styles.intro}>
+        <p style={styles.kicker} className="micro-kicker">سیستم ELORNA</p>
+
+        <h2 style={styles.sectionTitle}>
+          One infrastructure.
+          <br />
+          <span style={styles.goldText}>امکان‌های بی‌مرز.</span>
+        </h2>
+
+        <p style={styles.sectionDescription}>
+          Building a business should not require a disconnected collection of
+          tools. Elorna brings the essential stages of business creation and
+          growth into one coherent ecosystem.
+        </p>
+      </section>
+
+      {/* BUSINESS JOURNEY */}
+      <section id="journey" style={styles.journey}>
+        {businessStages.map((stage) => (
+          <div key={stage.number} className="premium-panel stage-premium" style={styles.stage}>
+            <h3 style={styles.stageTitle}>{stage.title}</h3>
+            <p style={styles.stageText}>{stage.text}</p>
+            <div style={styles.stageMeta}>
+              <p style={styles.stageMetaText}><strong>مناسب برای:</strong> {stage.bestFor}</p>
+              <p style={styles.stageMetaText}>{stage.example}</p>
+              <span style={styles.engagement} className="micro-pill">{stage.engagement}</span>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* INFRASTRUCTURE IMAGE */}
+      <section style={styles.featureImageSection}>
+        <img
+          src="/infrastructurepossibilities.jpg"
+          alt="Elorna infrastructure"
+          style={styles.fullFeatureImage}
+        />
+      </section>
+
+      {/* SHOWCASE */}
+      <section style={styles.showcaseSection}>
+        {showcase.map((item, index) => (
+          <article
+            key={item.title}
+            id={item.eyebrow === "INTELLIGENCE LAYER" ? "ai" : undefined}
+            style={{
+              ...styles.showcase,
+              flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+            }}
+          >
+            <div style={styles.showcaseImageWrap}>
+              <img
+                src={item.image}
+                alt={item.title}
+                style={styles.showcaseImage}
+              />
+            </div>
+
+            <div style={styles.showcaseContent}>
+              <p style={styles.kicker} className="micro-kicker">{item.eyebrow}</p>
+              <h2 style={styles.showcaseTitle}>{item.title}</h2>
+              <p style={styles.showcaseText}>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      {/* VISION */}
+      <section id="vision" style={styles.vision}>
+        <img
+          src="/elorna-emblem.jpg"
+          alt="Elorna"
+          style={styles.visionLogo}
+        />
+
+        <p style={styles.kicker} className="micro-kicker">چشم‌انداز ما</p>
+
+        <h2 style={styles.visionTitle}>
+          Technology should make
+          <br />
+          ambition <span style={styles.goldText}>possible.</span>
+        </h2>
+
+        <p style={styles.visionText}>
+          Elorna is built around a simple idea: founders should spend less time
+          managing complexity and more time creating, selling and growing.
+        </p>
+      </section>
+
+      {/* TRUST */}
+      <section style={styles.trust}>
+        <div style={styles.trustItem}>
+          <span style={styles.trustIcon}>◇</span>
+          <h3 style={styles.trustTitle}>هوشمندتر</h3>
+          <p style={styles.trustText}>
+            AI-supported decisions and workflows.
+          </p>
+        </div>
+
+        <div style={styles.trustItem}>
+          <span style={styles.trustIcon}>◈</span>
+          <h3 style={styles.trustTitle}>ساده‌تر</h3>
+          <p style={styles.trustText}>
+            One connected journey instead of scattered tools.
+          </p>
+        </div>
+
+        <div style={styles.trustItem}>
+          <span style={styles.trustIcon}>△</span>
+          <h3 style={styles.trustTitle}>مقیاس‌پذیر</h3>
+          <p style={styles.trustText}>
+            Designed to evolve as your business grows.
+          </p>
+        </div>
+
+        <div style={styles.trustItem}>
+          <span style={styles.trustIcon}>◎</span>
+          <h3 style={styles.trustTitle}>جهانی</h3>
+          <p style={styles.trustText}>
+            A future-facing platform built beyond borders.
+          </p>
+        </div>
+      </section>
+
+      {/* TRANSPARENT PROOF */}
+      <section style={styles.proofSection}>
+        <div>
+          <p style={styles.kicker} className="micro-kicker">فرآیند کار چگونه می‌تواند باشد</p>
+          <h2 style={styles.proofTitle}>یک نمونه شفاف از روند کار — نه نتیجه ساختگی مشتری.</h2>
+          <p style={styles.proofText}>
+            Example: a founder arrives with an early idea. ELORNA can help structure the offer, clarify positioning, build a launch checklist, map a first sales journey and define the measurements to review next. This is a methodology example, not a claim of guaranteed results.
+          </p>
+        </div>
+        <div style={styles.proofFlow}>
+          {["Idea & context","Positioning & offer","Launch plan","Sales journey","Measure & improve"].map((step) => (
+            <span key={step} className="premium-panel proof-step-premium" style={styles.proofStep}>{step}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* بنیان‌گذار & TRUST */}
+      <section style={styles.founderSection}>
+        <div>
+          <p style={styles.kicker} className="micro-kicker">با هدایت بنیان‌گذار</p>
+          <h2 style={styles.founderTitle}>ساخته‌شده با مسئولیت‌پذیری، شفافیت و کنترل بنیان‌گذار.</h2>
+        </div>
+        <div className="premium-panel founder-premium" style={styles.founderCard}>
+          <span style={styles.contactLabel} className="micro-label">بنیان‌گذار</span>
+          <strong style={styles.founderName}>Elnaz Ghanbari</strong>
+          <p style={styles.founderText}>
+            Elnaz Ghanbari is the founder of ELORNA and leads its product direction, brand system and founder experience. She is building the platform around a practical principle: AI should reduce complexity, explain the next step and keep important business decisions under human control. ELORNA is an early-stage founder-led product, and examples shown on this site are clearly presented as workflows or prototypes rather than invented client results.
+          </p>
+          <a href="mailto:elnaz@elorna.net" className="copper-link" style={styles.founderLink}>elnaz@elorna.net</a>
+        </div>
+      </section>
+
+      {/* CAPITAL NOTICE */}
+      <section style={styles.noticeSection}>
+        <p style={styles.noticeText}>
+          <strong>اطلاعیه سرمایه:</strong> ELORNA may provide general readiness tools, educational information and introductions. It does not guarantee funding, profit, investment performance or approval, and does not present itself as a regulated investment adviser or broker.
+        </p>
+      </section>
+
+      {/* FINAL CTA */}
+      <section id="start" style={styles.cta}>
+        <div style={styles.ctaGlow} />
+
+        <img
+          src="/elorna-emblem.jpg"
+          alt="Elorna emblem"
+          style={styles.ctaLogo}
+        />
+
+        <p style={styles.kicker} className="micro-kicker">فصل بعدی از اینجا شروع می‌شود</p>
+
+        <h2 style={styles.ctaTitle}>
+          Are you ready to
+          <br />
+          <span style={styles.goldText}>میراث خودت را بسازی؟</span>
+        </h2>
+
+        <p style={styles.ctaText}>
+          Build. Sell. Grow. Prepare for what comes next.
+          <br />
+          All through one connected vision.
+        </p>
+
+        <a href="#contact" className="lux-button lux-button-primary" style={styles.ctaButton} aria-label="تماس ELORNA to start building">
+          START WITH ELORNA
+        </a>
+      </section>
+
+      {/* TRUST LANGUAGE */}
+      <section style={styles.languageSection}>
+        <div>
+          <p style={styles.kicker} className="micro-kicker">ELORNA چگونه ارتباط برقرار می‌کند</p>
+          <h2 style={styles.languageTitle}>شفافیتی که می‌توانی بر آن بنا کنی.</h2>
+        </div>
+        <div style={styles.languageGrid}>
+          <div className="premium-panel language-premium" style={styles.languageCard}>
+            <span style={styles.goodLabel}>واژه‌های پیشنهادی</span>
+            <p style={styles.languageWords}>opportunity • clarity • connected • precise • responsible • useful</p>
+          </div>
+          <div className="premium-panel language-premium" style={styles.languageCard}>
+            <span style={styles.avoidLabel}>واژه‌های ممنوع</span>
+            <p style={styles.languageWords}>guarantee • revolutionary • disrupt • risk-free • certain • guaranteed</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" style={styles.contactSection}>
+        <div style={styles.contactIntro}>
+          <p style={styles.kicker} className="micro-kicker">تماس با ELORNA</p>
+          <h2 style={styles.contactTitle}>یک گفت‌وگوی جدی با ELORNA شروع کن.</h2>
+          <p style={styles.contactText}>
+            Tell us what you are building, where you are stuck and what a stronger next step would look like. Your message goes directly to ELORNA’s official contact route.
+          </p>
+        </div>
+
+        <div style={styles.socialStrip}>
+          <span style={styles.contactLabel} className="micro-label">ELORNA را دنبال کنید</span>
+          <div style={styles.socialLinks}>
+            <a
+              href="https://www.linkedin.com/company/elorna"
+              target="_blank"
+              rel="noreferrer"
+              className="copper-link social-link"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.instagram.com/elorna.official"
+              target="_blank"
+              rel="noreferrer"
+              className="copper-link social-link"
+            >
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        <div style={styles.contactLayout}>
+          <form
+            className="premium-panel premium-form"
+            action="https://formsubmit.co/contact@elorna.net"
+            method="POST"
+            style={styles.contactForm}
+          >
+            <input type="hidden" name="_subject" value="New ELORNA website inquiry" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://elorna.net/thank-you" />
+            <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+            <label style={styles.formLabel}>
+              Name
+              <input name="name" required style={styles.formInput} placeholder="Your name" />
+            </label>
+            <label style={styles.formLabel}>
+              Email
+              <input name="email" type="email" required style={styles.formInput} placeholder="you@example.com" />
+            </label>
+            <label style={styles.formLabel}>
+              Message
+              <textarea name="message" required style={styles.formTextarea} placeholder="Tell us what you are building and what you need help with." />
+            </label>
+            <button type="submit" style={styles.formButton}>ارسال به ELORNA</button>
+            <p style={styles.formNote}>پیام شما به‌صورت امن به contact@elorna.net ارسال می‌شود و برنامه ایمیل باز نخواهد شد.</p>
+          </form>
+
+          <div style={styles.contactGrid}>
+            <a href="mailto:contact@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">تماس عمومی</span>
+              <strong style={styles.contactValue}>contact@elorna.net</strong>
+            </a>
+            <a href="mailto:elnaz@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">بنیان‌گذار</span>
+              <strong style={styles.contactValue}>elnaz@elorna.net</strong>
+            </a>
+            <a href="mailto:support@elorna.net" className="contact-card-link premium-panel premium-contact-card" style={styles.contactCard}>
+              <span style={styles.contactLabel} className="micro-label">پشتیبانی</span>
+              <strong style={styles.contactValue}>support@elorna.net</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={styles.footer}>
+        <div style={styles.footerBrand}>
+          <img
+            src="/elorna-emblem.jpg"
+            alt=""
+            style={styles.footerLogo}
+          />
+
+          <div>
+            <div style={styles.footerName}>ELORNA</div>
+            <div style={styles.footerTagline}>
+              AI • IT • INVESTMENT • FUTURE
+            </div>
+          </div>
+        </div>
+
+        <div style={styles.footerLinks} className="footer-lux-links">
+          <a href="https://elorna.net">ELORNA.NET</a>
+          <a href="mailto:contact@elorna.net">contact@elorna.net</a>
+          <a href="mailto:support@elorna.net">support@elorna.net</a>
+          <a href="https://www.linkedin.com/company/elorna" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/elorna.official" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+
+        <div style={styles.footerRight}>
+          © 2026 ELORNA. All rights reserved.<br />
+          <span style={styles.footerFine}>AI-assisted. Human-approved. No guaranteed commercial or investment outcomes.</span>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
+const gold = "#d6a34a";
+const border = "rgba(214,163,74,0.22)";
+
+const styles: Record<string, React.CSSProperties> = {
+  page: {
+    margin: 0,
+    minHeight: "100vh",
+    background:
+      "radial-gradient(circle at 50% 0%, #102236 0%, #06101a 28%, #02070d 70%)",
+    color: "#f7f3eb",
+    fontFamily: "'Manrope', 'Avenir Next', Helvetica, sans-serif",
+    overflowX: "hidden",
+  },
+
+  nav: {
+    minHeight: 78,
+    padding: "0 5%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 20,
+    borderBottom: border,
+    background: "rgba(2,7,13,0.88)",
+    position: "sticky",
+    top: 0,
+    zIndex: 50,
+    backdropFilter: "blur(14px)",
+  },
+
+  brand: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    color: "#e8bd70",
+    textDecoration: "none",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: 23,
+    letterSpacing: 6,
+  },
+
+  brandIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: "50%",
+    objectFit: "cover",
+  },
+
+  navLinks: {
+    display: "flex",
+    gap: 28,
+    alignItems: "center",
+  },
+
+  navLink: {
+    color: "#f0e8dd",
+    textDecoration: "none",
+    fontSize: 17,
+    minWidth: 72,
+    textAlign: "center",
+    position: "relative",
+  },
+
+  navActions: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+  },
+  languageMenu: {
+    position: "relative",
+  },
+  languageSummary: {
+    listStyle: "none",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: 7,
+    padding: "11px 13px",
+    border: "1px solid rgba(214,163,74,.38)",
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: ".08em",
+  },
+  languageDropdown: {
+    position: "absolute",
+    right: 0,
+    top: "calc(100% + 10px)",
+    minWidth: 150,
+    padding: 8,
+    border: "1px solid rgba(214,163,74,.32)",
+    borderRadius: 12,
+    background: "#07111b",
+    boxShadow: "0 20px 50px rgba(0,0,0,.4)",
+    zIndex: 100,
+  },
+  navButton: {
+    color: "#f0c97c",
+    textDecoration: "none",
+    border: `1px solid ${gold}`,
+    borderRadius: 999,
+    padding: "12px 22px",
+    fontSize: 14,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 12,
+    letterSpacing: .3,
+  },
+
+  hero: {
+    minHeight: "calc(100vh - 78px)",
+    maxWidth: 1500,
+    margin: "auto",
+    padding: "80px 6%",
+    boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 60,
+    position: "relative",
+  },
+
+  heroGlow: {
+    position: "absolute",
+    width: 500,
+    height: 500,
+    left: "-200px",
+    top: "20%",
+    borderRadius: "50%",
+    background: "rgba(198,139,49,.09)",
+    filter: "blur(90px)",
+  },
+
+  heroContent: {
+    flex: "1 1 520px",
+    position: "relative",
+    zIndex: 2,
+  },
+
+  kicker: {
+    color: gold,
+    letterSpacing: 4,
+    fontSize: 12,
+    fontWeight: 700,
+    marginBottom: 22,
+  },
+
+  heroTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(46px, 6vw, 88px)",
+    lineHeight: 0.95,
+    letterSpacing: -3,
+    margin: "0 0 30px",
+    fontWeight: 500,
+  },
+
+  goldText: {
+    color: gold,
+  },
+
+  heroText: {
+    color: "#d1d5d8",
+    fontSize: 19,
+    lineHeight: 1.8,
+    maxWidth: 650,
+  },
+
+  heroButtons: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 14,
+    marginTop: 35,
+  },
+
+  primaryButton: {
+    padding: "15px 26px",
+    background: gold,
+    color: "#07101a",
+    borderRadius: 5,
+    textDecoration: "none",
+    fontWeight: 700,
+  },
+
+  secondaryButton: {
+    padding: "14px 26px",
+    color: "#fff",
+    border: "1px solid rgba(255,255,255,.25)",
+    borderRadius: 5,
+    textDecoration: "none",
+  },
+
+  badges: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+    marginTop: 35,
+  },
+
+  badge: {
+    padding: "8px 13px",
+    border: "1px solid rgba(255,255,255,.12)",
+    borderRadius: 30,
+    color: "#aeb5bc",
+    fontSize: 11,
+  },
+
+  heroVisual: {
+    flex: "1 1 500px",
+    maxWidth: 620,
+    position: "relative",
+  },
+
+  heroImage: {
+    width: "100%",
+    display: "block",
+    borderRadius: 26,
+    boxShadow: "0 30px 100px rgba(0,0,0,.65)",
+  },
+
+  pillars: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+    borderTop: border,
+    borderBottom: border,
+  },
+
+  pillar: {
+    padding: "45px 6%",
+    borderRight: border,
+  },
+
+  pillarTitle: {
+    color: gold,
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    letterSpacing: 1,
+    fontSize: 18,
+  },
+
+  pillarText: {
+    color: "#919aa3",
+    lineHeight: 1.7,
+    fontSize: 14,
+  },
+
+  intro: {
+    maxWidth: 1000,
+    margin: "0 auto",
+    padding: "130px 6% 70px",
+    textAlign: "center",
+  },
+
+  sectionTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(48px,6vw,84px)",
+    lineHeight: 1.05,
+    margin: "0 0 28px",
+  },
+
+  sectionDescription: {
+    maxWidth: 750,
+    margin: "auto",
+    color: "#9ca5ad",
+    fontSize: 18,
+    lineHeight: 1.8,
+  },
+
+  journey: {
+    maxWidth: 1400,
+    margin: "0 auto",
+    padding: "30px 5% 120px",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+    gap: 18,
+  },
+
+  stage: {
+    minHeight: 240,
+    padding: 30,
+    background: "linear-gradient(145deg,#091522,#050b11)",
+    border: border,
+    borderRadius: 18,
+  },
+
+  stageNumber: {
+    color: gold,
+    fontSize: 12,
+    letterSpacing: 3,
+  },
+
+  stageTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    color: "#e6bd76",
+    fontSize: 34,
+    fontWeight: 600,
+    margin: "22px 0 15px",
+  },
+
+  stageText: {
+    color: "#9da5ad",
+    lineHeight: 1.7,
+  },
+  stageMeta: {
+    marginTop: 24,
+    paddingTop: 20,
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  stageMetaText: {
+    margin: "0 0 10px",
+    color: "#7f8992",
+    fontSize: 12,
+    lineHeight: 1.55,
+  },
+  engagement: {
+    display: "inline-block",
+    marginTop: 8,
+    padding: "7px 10px",
+    border: border,
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 10,
+    letterSpacing: 1,
+    textTransform: "uppercase",
+  },
+
+  featureImageSection: {
+    maxWidth: 1250,
+    padding: "0 5% 130px",
+    margin: "auto",
+  },
+
+  fullFeatureImage: {
+    width: "100%",
+    display: "block",
+    borderRadius: 24,
+    border: border,
+    boxShadow: "0 40px 100px rgba(0,0,0,.5)",
+  },
+
+  showcaseSection: {
+    maxWidth: 1400,
+    margin: "auto",
+    padding: "0 5%",
+  },
+
+  showcase: {
+    display: "flex",
+    alignItems: "center",
+    gap: "clamp(35px,7vw,100px)",
+    padding: "100px 0",
+    borderTop: border,
+    flexWrap: "wrap",
+  },
+
+  showcaseImageWrap: {
+    flex: "1 1 460px",
+  },
+
+  showcaseImage: {
+    width: "100%",
+    display: "block",
+    borderRadius: 22,
+    boxShadow: "0 30px 80px rgba(0,0,0,.5)",
+  },
+
+  showcaseContent: {
+    flex: "1 1 380px",
+  },
+
+  showcaseTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(42px,5vw,70px)",
+    lineHeight: 1.05,
+    margin: "0 0 25px",
+  },
+
+  showcaseText: {
+    color: "#c2c8cd",
+    fontSize: 19,
+    lineHeight: 1.8,
+  },
+
+  vision: {
+    textAlign: "center",
+    padding: "150px 6%",
+    background:
+      "radial-gradient(circle at center,rgba(190,132,46,.12),transparent 45%)",
+  },
+
+  visionLogo: {
+    width: 95,
+    height: 95,
+    objectFit: "cover",
+    borderRadius: "50%",
+    marginBottom: 35,
+  },
+
+  visionTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(48px,6vw,86px)",
+    lineHeight: 1.05,
+    margin: "0 auto 30px",
+  },
+
+  visionText: {
+    maxWidth: 760,
+    margin: "auto",
+    color: "#c0c6cb",
+    lineHeight: 1.8,
+    fontSize: 18,
+  },
+
+  trust: {
+    maxWidth: 1300,
+    margin: "auto",
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+    borderTop: border,
+    borderBottom: border,
+  },
+
+  trustItem: {
+    padding: "60px 30px",
+    textAlign: "center",
+    borderRight: border,
+  },
+
+  trustIcon: {
+    color: gold,
+    fontSize: 35,
+  },
+
+  trustTitle: {
+    color: "#e7bd72",
+    letterSpacing: 3,
+    marginTop: 25,
+  },
+
+  trustText: {
+    color: "#929ba3",
+    lineHeight: 1.7,
+  },
+
+  cta: {
+    padding: "150px 6%",
+    textAlign: "center",
+    position: "relative",
+    overflow: "hidden",
+  },
+
+  ctaGlow: {
+    position: "absolute",
+    width: 600,
+    height: 300,
+    background: "rgba(196,136,43,.10)",
+    filter: "blur(100px)",
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
+
+  ctaLogo: {
+    width: 110,
+    height: 110,
+    objectFit: "cover",
+    borderRadius: "50%",
+    marginBottom: 35,
+    position: "relative",
+  },
+
+  ctaTitle: {
+    position: "relative",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontWeight: 600,
+    fontSize: "clamp(52px,7vw,92px)",
+    lineHeight: 1,
+    margin: "0 0 30px",
+  },
+
+  ctaText: {
+    position: "relative",
+    color: "#a6adb4",
+    fontSize: 18,
+    lineHeight: 1.8,
+    marginBottom: 40,
+  },
+
+  ctaButton: {
+    position: "relative",
+    display: "inline-block",
+    padding: "17px 32px",
+    borderRadius: 5,
+    background: gold,
+    color: "#07101a",
+    textDecoration: "none",
+    fontWeight: 800,
+    letterSpacing: 1,
+  },
+
+  proofSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "105px 6%",
+    display: "grid",
+    gridTemplateColumns: "1.1fr .9fr",
+    gap: 50,
+    alignItems: "start",
+    borderTop: border,
+  },
+  proofTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(38px,4vw,60px)",
+    fontWeight: 400,
+    lineHeight: 1.08,
+    margin: "0 0 22px",
+  },
+  proofText: {
+    color: "#aab1b8",
+    fontSize: 16,
+    lineHeight: 1.75,
+    margin: 0,
+  },
+  proofFlow: {
+    display: "grid",
+    gap: 10,
+  },
+  proofStep: {
+    padding: "16px 18px",
+    border: border,
+    background: "rgba(7,14,21,.82)",
+    color: "#c6cbd0",
+    fontSize: 13,
+  },
+  contactSection: {
+    maxWidth: 1400,
+    margin: "0 auto",
+    padding: "100px 6% 120px",
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  contactIntro: {
+    maxWidth: 850,
+    marginBottom: 42,
+  },
+  contactTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(38px,4vw,60px)",
+    fontWeight: 400,
+    margin: "0 0 20px",
+  },
+  contactText: {
+    color: "#aab1b8",
+    fontSize: 19,
+    lineHeight: 1.75,
+  },
+  socialStrip: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 20,
+    flexWrap: "wrap",
+    padding: "18px 0 28px",
+  },
+  socialLinks: {
+    display: "flex",
+    gap: 14,
+    flexWrap: "wrap",
+  },
+  contactLayout: {
+    display: "grid",
+    gridTemplateColumns: "1.05fr .95fr",
+    gap: 24,
+    alignItems: "start",
+  },
+  contactForm: {
+    display: "grid",
+    gap: 16,
+    padding: 28,
+    border: border,
+    background: "rgba(7,14,21,.85)",
+  },
+  formLabel: {
+    display: "grid",
+    gap: 8,
+    color: "#c6cbd0",
+    fontSize: 12,
+    letterSpacing: .5,
+  },
+  formInput: {
+    width: "100%",
+    padding: "13px 14px",
+    border: "1px solid rgba(255,255,255,.14)",
+    borderRadius: 6,
+    background: "#050b11",
+    color: "#f4efe6",
+    fontSize: 14,
+  },
+  formTextarea: {
+    width: "100%",
+    minHeight: 150,
+    resize: "vertical",
+    padding: "13px 14px",
+    border: "1px solid rgba(255,255,255,.14)",
+    borderRadius: 6,
+    background: "#050b11",
+    color: "#f4efe6",
+    fontSize: 14,
+    fontFamily: "'Manrope', 'Avenir Next', Helvetica, sans-serif",
+  },
+  formButton: {
+    border: 0,
+    borderRadius: 6,
+    padding: "14px 18px",
+    background: gold,
+    color: "#07101a",
+    fontWeight: 800,
+    letterSpacing: 1,
+    cursor: "pointer",
+  },
+  formNote: {
+    margin: 0,
+    color: "#737d85",
+    fontSize: 11,
+    lineHeight: 1.5,
+  },
+  contactGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gap: 16,
+  },
+  contactCard: {
+    padding: 26,
+    border: border,
+    background: "rgba(7,14,21,.85)",
+    textDecoration: "none",
+    minHeight: 130,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  contactLabel: {
+    color: "#86704e",
+    fontSize: 12,
+    letterSpacing: 2.2,
+  },
+  contactValue: {
+    color: "#e8bd70",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: 24,
+    fontWeight: 500,
+  },
+  uspSection: {
+    maxWidth: 1100,
+    margin: "0 auto",
+    padding: "95px 6%",
+    textAlign: "center",
+    borderBottom: border,
+  },
+  uspTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(42px,5vw,72px)",
+    fontWeight: 400,
+    lineHeight: 1.06,
+    margin: "0 0 22px",
+  },
+  uspText: {
+    maxWidth: 850,
+    margin: "0 auto",
+    color: "#aab1b8",
+    fontSize: 18,
+    lineHeight: 1.8,
+  },
+  positioningGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 16,
+    marginTop: 34,
+    textAlign: "left",
+  },
+  positioningCard: {
+    padding: 24,
+    border: border,
+    background: "rgba(7,14,21,.82)",
+  },
+  uspBadge: {
+    display: "inline-block",
+    marginTop: 28,
+    padding: "10px 16px",
+    border: border,
+    borderRadius: 999,
+    color: "#e8bd70",
+    fontSize: 12,
+    letterSpacing: 1,
+  },
+  founderSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "110px 6%",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 50,
+    alignItems: "center",
+    borderTop: border,
+  },
+  founderTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(40px,4.6vw,68px)",
+    fontWeight: 400,
+    lineHeight: 1.06,
+    margin: 0,
+  },
+  founderCard: {
+    padding: 32,
+    border: border,
+    background: "rgba(7,14,21,.82)",
+  },
+  founderName: {
+    display: "block",
+    color: "#e8bd70",
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: 28,
+    fontWeight: 400,
+    margin: "14px 0",
+  },
+  founderText: {
+    color: "#aab1b8",
+    lineHeight: 1.75,
+    fontSize: 15,
+  },
+  founderLink: {
+    color: "#e8bd70",
+    textDecoration: "none",
+    fontSize: 14,
+  },
+  noticeSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "0 6% 100px",
+  },
+  noticeText: {
+    margin: 0,
+    padding: 24,
+    border: "1px solid rgba(214,163,74,.18)",
+    background: "rgba(214,163,74,.04)",
+    color: "#9da5ad",
+    lineHeight: 1.7,
+    fontSize: 13,
+  },
+  languageSection: {
+    maxWidth: 1300,
+    margin: "0 auto",
+    padding: "90px 6%",
+    borderTop: "1px solid rgba(255,255,255,.07)",
+  },
+  languageTitle: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    fontSize: "clamp(38px,4vw,58px)",
+    fontWeight: 400,
+    margin: "0 0 32px",
+  },
+  languageGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: 16,
+  },
+  languageCard: {
+    padding: 24,
+    border: border,
+    background: "rgba(7,14,21,.82)",
+  },
+  goodLabel: {
+    color: "#e8bd70",
+    fontSize: 11,
+    letterSpacing: 2,
+    fontWeight: 700,
+  },
+  avoidLabel: {
+    color: "#a6adb4",
+    fontSize: 11,
+    letterSpacing: 2,
+    fontWeight: 700,
+  },
+  languageWords: {
+    margin: "12px 0 0",
+    color: "#aab1b8",
+    lineHeight: 1.7,
+    fontSize: 16,
+  },
+  footerFine: {
+    display: "inline-block",
+    marginTop: 5,
+    color: "#5f6870",
+    fontSize: 10,
+    lineHeight: 1.5,
+  },
+  footerLinks: {
+    display: "flex",
+    gap: 18,
+    flexWrap: "wrap",
+    fontSize: 12,
+    color: "#a4abb1",
+  },
+  footer: {
+    padding: "40px 5%",
+    borderTop: border,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 25,
+  },
+
+  footerBrand: {
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+  },
+
+  footerLogo: {
+    width: 48,
+    height: 48,
+    objectFit: "cover",
+    borderRadius: "50%",
+  },
+
+  footerName: {
+    fontFamily: "'Bodoni Moda', 'Cormorant Garamond', Georgia, serif",
+    color: "#e6bb6d",
+    fontSize: 23,
+    letterSpacing: 7,
+  },
+
+  footerTagline: {
+    color: "#806b49",
+    fontSize: 9,
+    letterSpacing: 3,
+    marginTop: 5,
+  },
+
+  footerRight: {
+    color: "#6f7880",
+    fontSize: 12,
+  },
+};
