@@ -1,5 +1,6 @@
 import "./globals.css";
 import "./premium.css";
+import "./journey-bento.css";
 
 export const viewport = {
   themeColor: "#050A11",
