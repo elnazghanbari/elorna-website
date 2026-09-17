@@ -245,8 +245,18 @@ export default function Home() {
         </div>
         <div style={styles.uspBadge}>با کمک هوش مصنوعی • تحت کنترل بنیان‌گذار • یکپارچه از ابتدا</div>
       </section>
-
-      {/* PILLARS */}
+<img
+  src="/elorna-fa-homepage-png.jpg"
+  alt="معرفی فارسی ELORNA، هوش مصنوعی، ساخت، فروش، رشد و آینده کسب‌وکار"
+  style={{
+    display: "block",
+    width: "100%",
+    height: "auto",
+    objectFit: "contain",
+    objectPosition: "center",
+    borderRadius: "24px",
+  }}
+/>      {/* PILLARS */}
       <section id="platform" style={styles.pillars}>
         {pillars.map((pillar) => (
           <div key={pillar.title} style={styles.pillar}>
