@@ -218,7 +218,7 @@ export default function Home() {
 
         <div style={styles.heroVisual}>
           <img
-            src="/elorna-vision.jpg"
+            src="/elorna-fa-homepage-png.jpg"
             alt="Elorna vision"
             style={styles.heroImage}
           />
