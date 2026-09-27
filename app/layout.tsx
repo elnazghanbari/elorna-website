@@ -1,6 +1,8 @@
 import "./globals.css";
 import "./premium.css";
 import "./journey-bento.css";
+import "./chat.css";
+import ElornaChat from "./components/ElornaChat";
 
 export const viewport = {
   themeColor: "#050A11",
@@ -71,7 +73,7 @@ export const metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}<ElornaChat /></body>
     </html>
   );
 }
