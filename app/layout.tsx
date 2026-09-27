@@ -2,6 +2,7 @@ import "./globals.css";
 import "./premium.css";
 import "./journey-bento.css";
 import "./chat.css";
+import "./platform.css";
 import ElornaChat from "./components/ElornaChat";
 
 export const viewport = {
