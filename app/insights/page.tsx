@@ -1,0 +1,6 @@
+const posts=[
+["AI • STRATEGY","Where AI should help — and where founders should stay in control.","A practical framework for using AI to reduce repetitive work without outsourcing the decisions that define your business."],
+["BUILD","From idea to a launch-ready business foundation.","Why positioning, offer clarity and a small number of measurable assumptions matter before adding more tools."],
+["GROW","Growth is not more activity. It is better feedback.","A simple way to turn business signals into focused experiments instead of chasing every possible channel."]
+];
+export default function Insights(){return <main className="productPage"><nav className="productNav"><a href="/">← ELORNA</a><span>INSIGHTS</span></nav><div className="productWrap"><span className="moduleTag">ELORNA JOURNAL</span><h1>Ideas for building<br/>with more clarity.</h1><p className="productLead">Short, practical thinking on AI, business systems, brand, sales and sustainable growth.</p><div className="blogGrid">{posts.map(([meta,title,text])=><article className="blogCard" key={title}><span className="blogMeta">{meta}</span><h2>{title}</h2><p>{text}</p><span className="moduleTag">EDITORIAL NOTE</span></article>)}</div></div></main>}
