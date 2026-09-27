@@ -14,6 +14,7 @@ export default function ElornaChat() {
   const [messages, setMessages] = useState<Message[]>([welcome]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [diagnostic, setDiagnostic] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [messages, loading]);
@@ -41,6 +42,11 @@ export default function ElornaChat() {
     }
   }
 
+  function chooseDiagnostic(answer: string) {
+    setInput(`Business diagnostic: ${answer}. Recommend which ELORNA stage I should start with and give me 3 practical next steps.`);
+    setDiagnostic(false);
+  }
+
   return <div className="elornaChat">
     {open && <section className="chatPanel" aria-label="ELORNA AI Assistant">
       <header className="chatHead">
@@ -52,9 +58,7 @@ export default function ElornaChat() {
         {loading && <div className="chatMsg assistant typing">Thinking<span>…</span></div>}
         <div ref={endRef}/>
       </div>
-      <div className="chatQuick">
-        {["What can ELORNA do?","How does pricing work?","Where should I start?"].map(q=><button key={q} onClick={()=>setInput(q)}>{q}</button>)}
-      </div>
+      {diagnostic ? <div className="diagnosticBox"><strong>What best describes you right now?</strong><div className="diagnosticChoices">{["I have an idea","I need more sales","I want to grow","I’m preparing for capital"].map(x=><button key={x} onClick={()=>chooseDiagnostic(x)}>{x}</button>)}</div></div> : <div className="chatQuick"><button className="diagnosticStart" onClick={()=>setDiagnostic(true)}>✦ Find my starting point</button>{["What can ELORNA do?","How does pricing work?"].map(q=><button key={q} onClick={()=>setInput(q)}>{q}</button>)}</div>}
       <form onSubmit={send} className="chatForm">
         <input value={input} onChange={e=>setInput(e.target.value)} maxLength={800} placeholder="Ask ELORNA AI…" aria-label="Message ELORNA AI"/>
         <button type="submit" disabled={loading || !input.trim()} aria-label="Send">↑</button>
