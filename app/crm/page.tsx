@@ -1,0 +1,9 @@
+"use client";
+import {FormEvent,useEffect,useState} from "react";
+type Lead={name:string,email:string,stage:string,note:string};
+export default function CRM(){
+ const [leads,setLeads]=useState<Lead[]>([]);
+ useEffect(()=>{try{setLeads(JSON.parse(localStorage.getItem("elorna-crm")||"[]"))}catch{}},[]);
+ function add(e:FormEvent<HTMLFormElement>){e.preventDefault();const fd=new FormData(e.currentTarget);const lead={name:String(fd.get("name")||""),email:String(fd.get("email")||""),stage:String(fd.get("stage")||"New"),note:String(fd.get("note")||"")};const next=[lead,...leads];setLeads(next);localStorage.setItem("elorna-crm",JSON.stringify(next));e.currentTarget.reset()}
+ return <main className="productPage"><nav className="productNav"><a href="/">← ELORNA</a><span>CRM • PRIVATE BROWSER WORKSPACE</span></nav><div className="productWrap"><span className="moduleTag">ELORNA CRM</span><h1>Relationships,<br/>without the chaos.</h1><p className="productLead">A lightweight lead workspace for capturing prospects, their stage and the next context you need. This prototype stores entries only in this browser.</p><div className="workspace"><form onSubmit={add} className="toolGrid"><input className="toolInput" name="name" required placeholder="Client / lead name"/><input className="toolInput" name="email" type="email" placeholder="Email"/><select className="toolSelect" name="stage"><option>New</option><option>Discovery</option><option>Proposal</option><option>Client</option></select><textarea className="toolTextarea" name="note" placeholder="Context / next step"/><button className="toolButton" type="submit">Add to CRM</button></form><div className="toolList">{leads.length?leads.map((x,i)=><div className="toolItem" key={i}><div><b>{x.name}</b><small>{x.email} • {x.note}</small></div><span className="moduleTag">{x.stage}</span></div>):<div className="toolItem"><small>No leads yet. Add your first one above.</small></div>}</div></div></div></main>
+}
