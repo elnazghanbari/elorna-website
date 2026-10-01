@@ -1,72 +1,49 @@
 "use client";
-
 import { FormEvent, useEffect, useRef, useState } from "react";
-
-type Message = { role: "user" | "assistant"; content: string };
-
-const welcome: Message = {
-  role: "assistant",
-  content: "Hi — I’m ELORNA AI. Ask me about BUILD, SELL, GROW, CAPITAL, pricing, or the best next step for your business."
+import { usePathname } from "next/navigation";
+import { ChatLanguage, ChatMessage, knownName } from "../../lib/chat";
+const copy = {
+ en:{welcome:"Hi! I can help with ELORNA’s services, pricing and your next step. Contact requests are saved only through the contact form with your consent.",sub:"Digital services • Human follow-up",close:"Close chat",clear:"Clear conversation",thinking:"Preparing a reply…",placeholder:"Ask about your project…",send:"Send",guide:"Service guide",ai:"AI response",contact:"Request contact",prices:"What does a website cost?",services:"What can ELORNA do?",diagnostic:"Find my starting point",question:"Where is your business today?",choices:["I have an idea","I need more sales","I want to grow","I’m preparing for capital"],note:"Replies may need verification. Conversation stays in this tab until you clear it. Contact details in chat are not automatically saved.",error:"Connection unavailable. Please try again, or use Request contact.",name:"Name",email:"Email",phone:"Phone (optional)",project:"Your project / what you need",consent:"I agree that ELORNA may store these details and contact me about this request.",submit:"Submit request",saving:"Saving…",saved:"Your request was saved. Reference:",failure:"Your request was not saved. You can retry or send it yourself by email.",rate:"Too many attempts. Please wait a few minutes or use email.",emailCta:"Open email draft",back:"Back to conversation",formTitle:"Let’s prepare your next step",formNote:"Review your details before sending. A request is not a confirmed appointment. We show a reference only after successful storage."},
+ sv:{welcome:"Hej! Jag kan hjälpa med ELORNAs tjänster, priser och nästa steg. Kontaktförfrågningar sparas bara via formuläret med ditt samtycke.",sub:"Digitala tjänster • Mänsklig uppföljning",close:"Stäng chatten",clear:"Rensa samtalet",thinking:"Förbereder svar…",placeholder:"Fråga om ditt projekt…",send:"Skicka",guide:"Tjänsteguide",ai:"AI-svar",contact:"Begär kontakt",prices:"Vad kostar en webbplats?",services:"Vad kan ELORNA göra?",diagnostic:"Hitta mitt första steg",question:"Var befinner sig ditt företag?",choices:["Jag har en idé","Jag behöver mer försäljning","Jag vill växa","Jag förbereder kapital"],note:"Svar kan behöva kontrolleras. Samtalet finns i den här fliken tills du rensar det. Uppgifter i chatten sparas inte automatiskt som en förfrågan.",error:"Anslutningen fungerar inte just nu. Försök igen eller välj Begär kontakt.",name:"Namn",email:"E-post",phone:"Telefon (valfritt)",project:"Ditt projekt / vad du behöver",consent:"Jag samtycker till att ELORNA lagrar uppgifterna och kontaktar mig om denna förfrågan.",submit:"Skicka förfrågan",saving:"Sparar…",saved:"Din förfrågan har sparats. Referens:",failure:"Förfrågan sparades inte. Försök igen eller skicka den själv via e-post.",rate:"För många försök. Vänta några minuter eller använd e-post.",emailCta:"Öppna e-postutkast",back:"Tillbaka till samtalet",formTitle:"Förbered ditt nästa steg",formNote:"Kontrollera uppgifterna innan du skickar. En förfrågan är inte en bekräftad mötestid. Referens visas först efter lyckad lagring."},
+ fa:{welcome:"سلام! درباره خدمات ELORNA، قیمت‌ها و قدم بعدی پروژه‌ات بپرس. درخواست تماس فقط از طریق فرم و با رضایت تو ثبت می‌شود.",sub:"خدمات دیجیتال • پیگیری انسانی",close:"بستن گفتگو",clear:"پاک‌کردن گفتگو",thinking:"در حال آماده‌کردن پاسخ…",placeholder:"درباره پروژه‌ات بپرس…",send:"ارسال",guide:"راهنمای خدمات",ai:"پاسخ هوش مصنوعی",contact:"درخواست تماس",prices:"قیمت طراحی سایت چقدر است؟",services:"ELORNA چه خدماتی دارد؟",diagnostic:"قدم اولم را پیدا کن",question:"کسب‌وکارت در چه مرحله‌ای است؟",choices:["یک ایده دارم","فروش بیشتری می‌خواهم","می‌خواهم رشد کنم","برای سرمایه آماده می‌شوم"],note:"پاسخ‌ها ممکن است نیازمند بررسی باشند. گفتگو تا زمان پاک‌کردن در همین تب باقی می‌ماند. اطلاعات داخل چت خودکار به‌عنوان درخواست ذخیره نمی‌شوند.",error:"فعلاً اتصال برقرار نشد. دوباره امتحان کن یا «درخواست تماس» را باز کن.",name:"نام",email:"ایمیل",phone:"تلفن (اختیاری)",project:"پروژه یا کمک موردنیاز",consent:"رضایت دارم ELORNA این اطلاعات را ذخیره کند و درباره این درخواست با من تماس بگیرد.",submit:"ارسال درخواست",saving:"در حال ثبت…",saved:"درخواستت ذخیره شد. شماره پیگیری:",failure:"درخواست ذخیره نشد. دوباره تلاش کن یا خودت آن را با ایمیل ارسال کن.",rate:"تعداد تلاش‌ها زیاد است. چند دقیقه صبر کن یا از ایمیل استفاده کن.",emailCta:"بازکردن پیش‌نویس ایمیل",back:"بازگشت به گفتگو",formTitle:"قدم بعدی را آماده کنیم",formNote:"قبل از ارسال اطلاعات را بررسی کن. این درخواست، رزرو قطعی جلسه نیست. شماره پیگیری فقط بعد از ذخیره موفق نمایش داده می‌شود."}
 };
-
+type Message = ChatMessage & { mode?: "ai" | "guide" };
+const sessionKey = "elorna-chat-v2";
 export default function ElornaChat() {
-  const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([welcome]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [diagnostic, setDiagnostic] = useState(false);
-  const endRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [messages, loading]);
-
-  async function send(e: FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
-    if (!text || loading) return;
-    const next = [...messages, { role: "user" as const, content: text }];
-    setMessages(next);
-    setInput("");
-    setLoading(true);
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next.slice(-10) })
-      });
-      const data = await res.json();
-      setMessages(m => [...m, { role: "assistant", content: data.reply || "Please try again." }]);
-    } catch {
-      setMessages(m => [...m, { role: "assistant", content: "I couldn’t connect right now. You can reach ELORNA at contact@elorna.net." }]);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  function chooseDiagnostic(answer: string) {
-    setInput(`Business diagnostic: ${answer}. Recommend which ELORNA stage I should start with and give me 3 practical next steps.`);
-    setDiagnostic(false);
-  }
-
-  return <div className="elornaChat">
-    {open && <section className="chatPanel" aria-label="ELORNA AI Assistant">
-      <header className="chatHead">
-        <div><span className="chatOrb">✦</span><div><strong>ELORNA AI</strong><small>AI-assisted • Human-approved</small></div></div>
-        <button onClick={() => setOpen(false)} aria-label="Close chat">×</button>
-      </header>
-      <div className="chatMessages">
-        {messages.map((m,i)=><div key={i} className={`chatMsg ${m.role}`}>{m.content}</div>)}
-        {loading && <div className="chatMsg assistant typing">Thinking<span>…</span></div>}
-        <div ref={endRef}/>
-      </div>
-      {diagnostic ? <div className="diagnosticBox"><strong>What best describes you right now?</strong><div className="diagnosticChoices">{["I have an idea","I need more sales","I want to grow","I’m preparing for capital"].map(x=><button key={x} onClick={()=>chooseDiagnostic(x)}>{x}</button>)}</div></div> : <div className="chatQuick"><button className="diagnosticStart" onClick={()=>setDiagnostic(true)}>✦ Find my starting point</button>{["What can ELORNA do?","How does pricing work?"].map(q=><button key={q} onClick={()=>setInput(q)}>{q}</button>)}</div>}
-      <form onSubmit={send} className="chatForm">
-        <input value={input} onChange={e=>setInput(e.target.value)} maxLength={800} placeholder="Ask ELORNA AI…" aria-label="Message ELORNA AI"/>
-        <button type="submit" disabled={loading || !input.trim()} aria-label="Send">↑</button>
-      </form>
-      <p className="chatNote">AI can make mistakes. Important business decisions should be verified.</p>
-    </section>}
-    <button className="chatLauncher" onClick={()=>setOpen(v=>!v)} aria-label={open ? "Close ELORNA AI" : "Open ELORNA AI"}>
-      <span>✦</span><b>ELORNA AI</b>
-    </button>
-  </div>;
+ const path = usePathname();
+ const language:ChatLanguage = path.startsWith("/fa")?"fa":path.startsWith("/sv")?"sv":"en";
+ const t=copy[language];
+ const [open,setOpen]=useState(false),[messages,setMessages]=useState<Message[]>([]),[input,setInput]=useState(""),[loading,setLoading]=useState(false),[diagnostic,setDiagnostic]=useState(false),[contact,setContact]=useState(false),[ready,setReady]=useState(false);
+ const [name,setName]=useState(""),[email,setEmail]=useState(""),[phone,setPhone]=useState(""),[note,setNote]=useState(""),[consent,setConsent]=useState(false),[saving,setSaving]=useState(false),[result,setResult]=useState<{reference?:string;error?:"failure"|"rate"}>({});
+ const requestId=useRef("");const listRef=useRef<HTMLDivElement>(null);const panelRef=useRef<HTMLElement>(null);const launcherRef=useRef<HTMLButtonElement>(null);const controllerRef=useRef<AbortController|null>(null);
+ useEffect(()=>{try{const data=JSON.parse(sessionStorage.getItem(sessionKey)||"[]");if(Array.isArray(data))setMessages(data.filter(m=>(m.role==="user"||m.role==="assistant")&&typeof m.content==="string").slice(-60))}catch{}setReady(true);return()=>controllerRef.current?.abort()},[]);
+ useEffect(()=>{if(ready)try{sessionStorage.setItem(sessionKey,JSON.stringify(messages.slice(-60)))}catch{}},[messages,ready]);
+ useEffect(()=>{const list=listRef.current;if(list)list.scrollTop=list.scrollHeight},[messages,loading,open]);
+ useEffect(()=>{if(open)panelRef.current?.focus()},[open]);
+ function close(){setOpen(false);launcherRef.current?.focus()}
+ function openContact(){setDiagnostic(false);setContact(true);setName(v=>v||knownName(messages));const users=messages.filter(m=>m.role==="user");const text=users.map(m=>m.content).join("\n");setEmail(v=>v||text.match(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i)?.[0]||"");setPhone(v=>v||text.match(/\+?[\d۰-۹][\d۰-۹ ()-]{7,}[\d۰-۹]/)?.[0]||"");setNote(v=>v||users.find(m=>/website|web|سایت|فروشگاه|hemsida|automation|خودکار/.test(m.content.toLowerCase()))?.content.slice(0,1000)||"");if(!requestId.current)requestId.current=crypto.randomUUID()}
+ async function send(e:FormEvent){e.preventDefault();const text=input.trim();if(!text||loading||!ready)return;const next=[...messages,{role:"user" as const,content:text}].slice(-60);setMessages(next);setInput("");setLoading(true);const controller=new AbortController();controllerRef.current=controller;const timeout=setTimeout(()=>controller.abort(),25000);
+ try{const res=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:next,language}),signal:controller.signal});if(!res.ok)throw new Error("chat request failed");const data=await res.json();if(typeof data.reply!=="string")throw new Error("missing reply");setMessages(m=>[...m,{role:"assistant" as const,content:data.reply,mode:data.mode==="ai"?"ai" as const:"guide" as const}].slice(-60));}
+ catch{setMessages(m=>[...m,{role:"assistant" as const,content:t.error}].slice(-60))}finally{clearTimeout(timeout);setLoading(false);controllerRef.current=null}}
+ async function submitLead(e:FormEvent<HTMLFormElement>){e.preventDefault();if(saving||!consent)return;setSaving(true);setResult({});try{const res=await fetch("/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,phone,note,consent,requestId:requestId.current,website:new FormData(e.currentTarget).get("website")}),signal:AbortSignal.timeout(12000)});const data=await res.json();if(!res.ok||data.saved!==true||!data.reference){setResult({error:res.status===429?"rate":"failure"});return}setResult({reference:data.reference});setConsent(false)}catch{setResult({error:"failure"})}finally{setSaving(false)}}
+ const emailDraft="mailto:contact@elorna.net?subject="+encodeURIComponent("ELORNA project enquiry")+"&body="+encodeURIComponent(`${name}\n${email}\n${phone}\n\n${note}`);
+ return <div className="elornaChat" lang={language} dir={language==="fa"?"rtl":"ltr"}>
+ {open&&<section className="chatPanel" ref={panelRef} tabIndex={-1} aria-label="ELORNA" onKeyDown={e=>{if(e.key==="Escape")close()}}>
+ <header className="chatHead"><div><span className="chatOrb" aria-hidden="true">✦</span><div><strong>ELORNA</strong><small>{t.sub}</small></div></div><button onClick={close} aria-label={t.close}>×</button></header>
+ {contact?<div className="chatLead"><button className="chatBack" onClick={()=>setContact(false)}>{t.back}</button><h3>{t.formTitle}</h3><p>{t.formNote}</p>{result.reference?<div role="status"><p>{t.saved}</p><bdi className="chatReference">{result.reference}</bdi></div>:<form onSubmit={submitLead}>
+ <label>{t.name}<input required maxLength={120} autoComplete="name" value={name} onChange={e=>setName(e.target.value)}/></label>
+ <label>{t.email}<input required type="email" maxLength={180} autoComplete="email" dir="ltr" value={email} onChange={e=>setEmail(e.target.value)}/></label>
+ <label>{t.phone}<input type="tel" maxLength={40} autoComplete="tel" dir="ltr" value={phone} onChange={e=>setPhone(e.target.value)}/></label>
+ <label>{t.project}<textarea required maxLength={1000} value={note} onChange={e=>setNote(e.target.value)}/></label>
+ <div hidden aria-hidden="true"><input name="website" tabIndex={-1} autoComplete="off"/></div>
+ <label className="chatConsent"><input type="checkbox" required checked={consent} onChange={e=>setConsent(e.target.checked)}/><span>{t.consent}</span></label>
+ <button type="submit" className="chatSubmit" disabled={saving||!consent}>{saving?t.saving:t.submit}</button>
+ {result.error&&<p role="alert">{t[result.error]}</p>}<a href={emailDraft} className="chatEmail">{t.emailCta}</a>
+ </form>}</div>:<><div className="chatMessages" ref={listRef} role="log" aria-live="polite" aria-relevant="additions"><div className="chatMsg assistant" dir="auto">{t.welcome}</div>{messages.map((m,i)=><div key={i} className={`chatMsg ${m.role}`} dir="auto">{m.mode&&<small className="chatMode">{m.mode==="ai"?t.ai:t.guide}</small>}{m.content}</div>)}{loading&&<div className="chatMsg assistant typing">{t.thinking}</div>}</div>
+ {diagnostic?<div className="diagnosticBox"><strong>{t.question}</strong><div className="diagnosticChoices">{t.choices.map(x=><button key={x} onClick={()=>{setInput(x);setDiagnostic(false)}}>{x}</button>)}</div></div>:<div className="chatQuick"><button onClick={()=>setDiagnostic(true)}>{t.diagnostic}</button><button onClick={()=>setInput(t.prices)}>{t.prices}</button><button onClick={openContact}>{t.contact}</button></div>}
+ <form onSubmit={send} className="chatForm"><input value={input} onChange={e=>setInput(e.target.value)} maxLength={800} placeholder={t.placeholder} aria-label={t.placeholder} dir="auto"/><button type="submit" disabled={loading||!input.trim()||!ready} aria-label={t.send}>↑</button></form>
+ <div className="chatTools"><button onClick={openContact}>{t.contact}</button><button disabled={loading} onClick={()=>{setMessages([]);setInput("");setName("");setEmail("");setPhone("");setNote("");setConsent(false);setResult({});requestId.current=""}}>{t.clear}</button></div><p className="chatNote">{t.note}</p></>}
+ </section>}
+ <button className="chatLauncher" ref={launcherRef} onClick={()=>open?close():setOpen(true)} aria-expanded={open} aria-label={open?t.close:"ELORNA — "+t.contact}><span aria-hidden="true">✦</span><b>ELORNA</b></button>
+ </div>
 }
