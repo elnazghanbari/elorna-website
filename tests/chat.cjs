@@ -6,11 +6,12 @@ require.extensions['.ts']=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f
 const {NextRequest}=require('next/server');
 const {POST:chat}=require('../app/api/chat/route.ts');
 const {POST:lead}=require('../app/api/leads/route.ts');
-const {guideReply}=require('../lib/chat.ts');
+const {guideReply,knownName}=require('../lib/chat.ts');
 const request=(path,body,origin='https://elorna.net')=>new NextRequest('https://elorna.net'+path,{method:'POST',headers:{'content-type':'application/json',origin,'x-forwarded-for':'192.0.2.1'},body:JSON.stringify(body)});
 (async()=>{
  delete process.env.OPENAI_API_KEY;delete process.env.KV_REST_API_URL;delete process.env.KV_REST_API_TOKEN;delete process.env.UPSTASH_REDIS_REST_URL;delete process.env.UPSTASH_REDIS_REST_TOKEN;
  let r=await chat(request('/api/chat',{messages:[{role:'user',content:'قیمت سایت چقدر است؟'}],language:'fa'}));let d=await r.json();assert.match(d.reply,/۳٬۵۰۰/);assert.equal(d.mode,'guide');assert.equal(d.language,'fa');
+ const intro=[{role:'user',content:'اسم من آرمان است و یک سایت فروشگاهی می‌خواهم.'}];assert.equal(knownName(intro),'آرمان');assert.match(guideReply(intro,'fa'),/تعداد صفحات/);assert.match(guideReply([...intro,{role:'user',content:'اسم من چی بود؟'}],'fa'),/«آرمان»/);
  const history=[{role:'user',content:'my name is Test Person'},...Array.from({length:14},(_,i)=>({role:i%2?'user':'assistant',content:'message '+i})),{role:'user',content:'what is my name?'}];assert.match(guideReply(history,'en'),/Test Person/);
  r=await chat(request('/api/chat',{messages:[{role:'user',content:'test@example.com'}],language:'fa'}));d=await r.json();assert.equal(d.showContact,true);assert.match(d.reply,/خودکار/);assert.equal(d.leadCaptureAvailable,false);
  process.env.OPENAI_API_KEY='test-not-live';let sent;
