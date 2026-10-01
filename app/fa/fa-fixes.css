@@ -1,27 +1,91 @@
-.fa-route{width:100%;max-width:100vw;overflow-x:hidden;direction:rtl}
-.fa-route *{min-width:0;box-sizing:border-box}
-.fa-route img{max-width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important}
-.fa-route h1,.fa-route h2,.fa-route h3,.fa-route p,.fa-route span,.fa-route a,.fa-route strong{overflow-wrap:anywhere;word-break:normal;white-space:normal}
-.fa-route section,.fa-route article,.fa-route header,.fa-route footer,.fa-route div{max-width:100%}
-
-/* Keep every ELORNA showcase artwork fully visible. Never crop poster text. */
-.fa-route article img{width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;display:block!important}
-
-/* The Persian page needs more breathing room than the Latin layouts. */
-.fa-route article{overflow:visible!important}
-.fa-route article>div{overflow:visible!important}
-
-@media (max-width:1100px){
-  .fa-route article{flex-direction:column!important;align-items:stretch!important;gap:34px!important;padding:70px 0!important}
-  .fa-route article>div{flex:1 1 auto!important;width:100%!important;max-width:900px!important;margin-inline:auto!important}
-  .fa-route article img{width:100%!important;max-width:900px!important;margin-inline:auto!important}
+@font-face {
+  font-family: "ELORNA Vazirmatn";
+  src: url("/fonts/vazirmatn/vazirmatn-arabic-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ELORNA Vazirmatn";
+  src: url("/fonts/vazirmatn/vazirmatn-arabic-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
 }
 
-@media (max-width:780px){
-  .fa-route{font-size:16px}
-  .fa-route section{padding-left:5%!important;padding-right:5%!important}
-  .fa-route article{padding:48px 0!important;gap:24px!important}
-  .fa-route img{border-radius:16px!important}
-  .fa-route h1,.fa-route h2,.fa-route h3{line-height:1.25!important;letter-spacing:0!important}
-  .fa-route p{line-height:1.9!important}
+.fa-route {
+  width: 100%;
+  max-width: 100vw;
+  direction: rtl;
+}
+.fa-route * { min-width: 0; box-sizing: border-box; }
+.fa-route .fa-page,
+.fa-route .fa-page :is(h1,h2,h3,h4,p,span,a,strong,summary,button,input,textarea,figcaption) {
+  font-family: "ELORNA Vazirmatn", Tahoma, Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  word-spacing: .04em !important;
+  font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}
+.fa-route .fa-page :is(h1,h2,h3) {
+  font-weight: 600 !important;
+  line-height: 1.65 !important;
+  text-wrap: balance;
+  margin-block: 0 24px;
+}
+.fa-route .fa-page .hero h1 {
+  font-size: clamp(32px,3.6vw,50px) !important;
+  max-width: 650px;
+  margin-block: 16px 24px;
+}
+.fa-route .fa-page :is(.section,.show-copy,.cta,.contact,.offers-section) h2 {
+  font-size: clamp(25px,2.6vw,36px) !important;
+  max-width: 850px;
+}
+.fa-route .fa-page :is(.card,.offers-card,.concept-copy,.offers-terms) h3 {
+  font-size: clamp(19px,1.8vw,24px) !important;
+  margin-block: 0 16px;
+}
+.fa-route .fa-page p {
+  font-size: 16px;
+  font-weight: 400 !important;
+  line-height: 2 !important;
+  text-align: start;
+  margin-block: 0 20px;
+}
+.fa-route .fa-page .lead { font-size: 17px !important; max-width: 680px !important; }
+.fa-route .fa-page :is(.section,.show-copy,.contact) > p { max-width: 80ch; }
+.fa-route .fa-page .kicker,
+.fa-route .fa-page .offers-label { font-size: 12px !important; line-height: 1.9 !important; margin-bottom: 14px; }
+.fa-route .fa-page .card { padding: 28px; }
+.fa-route .fa-page .card p + p { margin-top: 20px; }
+.fa-route .fa-page :is(.primary,.secondary,.offers-button,.offers-link,.lang summary,.links a) {
+  font-size: 14px !important;
+  line-height: 1.8 !important;
+}
+.fa-route .fa-page .hero-buttons { gap: 16px; }
+.fa-route .fa-page .cta h2 { margin-inline: auto; margin-bottom: 28px; }
+.fa-route .fa-page .contact h2 { margin-inline: auto; }
+.fa-route .fa-page .contact > p { margin-inline: auto; text-align: center; }
+.fa-route .fa-page .offers-price { font-size: clamp(22px,2.3vw,28px) !important; font-weight: 600 !important; margin-bottom: 0; }
+.fa-route .fa-page :is(.offers-usd,.offers-note) { font-size: 13px !important; }
+.fa-route .fa-page .offers-label { letter-spacing: 0 !important; }
+.fa-route .fa-page .concept-canvas strong { font-size: clamp(24px,2.5vw,32px); line-height: 1.75 !important; }
+.fa-route img { max-width: 100%; height: auto; object-fit: contain; }
+.fa-route .show-image img { width: 100%; max-height: none; object-fit: contain; display: block; }
+.fa-route .fa-page .brand span { font-family: Georgia, serif !important; letter-spacing: 3px !important; }
+.fa-route .fa-page .contact-grid a { direction: ltr; overflow-wrap: anywhere; }
+
+@media (max-width: 600px) {
+  .fa-route .fa-page .hero h1 { font-size: 32px !important; }
+  .fa-route .fa-page :is(.section,.show-copy,.cta,.contact,.offers-section) h2 { font-size: 26px !important; }
+  .fa-route .fa-page p,
+  .fa-route .fa-page .lead { font-size: 15px !important; line-height: 2 !important; }
+  .fa-route .fa-page .section { padding-block: 54px; }
+  .fa-route .fa-page .card { padding: 22px; }
+  .fa-route .fa-page .offers-price { font-size: 25px !important; }
+  .fa-route .fa-page :is(.offers-note,.offers-usd) { font-size: 13px !important; }
 }
