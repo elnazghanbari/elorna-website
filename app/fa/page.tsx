@@ -1,3 +1,4 @@
+import OfferSections from "../components/OfferSections";
 const stages = [
   { title: "ساخت", text: "ایده‌ات را به یک کسب‌وکار متمرکز تبدیل کن؛ از استراتژی و جایگاه‌یابی تا هویت برند و برنامه‌ی آماده برای راه‌اندازی.", best: "مناسب برای بنیان‌گذاران و کسب‌وکارهای نوپا که ایده یا پیشنهاد اولیه دارند اما هنوز مسیر، برند و برنامه‌ی روشن برای شروع ندارند.", example: "نمونه خروجی: جایگاه‌یابی، جهت برند و چک‌لیست عملی راه‌اندازی." },
   { title: "فروش", text: "مسیر روشن‌تری از پیشنهاد تا مشتری بساز؛ با سفر فروش ساختاریافته، نقاط تبدیل و اندازه‌گیری عملکرد.", best: "مناسب برای کسب‌وکارهایی که محصول یا خدمت دارند و می‌خواهند مسیر مشتری و ساختار فروش خود را حرفه‌ای‌تر کنند.", example: "نمونه فرایند: بررسی پیشنهاد ← سفر مشتری ← برنامه تبدیل ← اندازه‌گیری." },
@@ -25,7 +26,7 @@ export default function PersianHome() {
 
       <header className="nav">
         <a className="brand" href="#top"><img src="/elorna-emblem.jpg" alt="نشان ELORNA"/><span>ELORNA</span></a>
-        <nav className="links" aria-label="ناوبری اصلی"><a href="#platform">پلتفرم</a><a href="#journey">مسیر</a><a href="#ai">هوش مصنوعی</a><a href="#vision">چشم‌انداز</a><a href="#contact">تماس</a></nav>
+        <nav className="links" aria-label="ناوبری اصلی"><a href="#platform">پلتفرم</a><a href="#journey">مسیر</a><a href="#ai">هوش مصنوعی</a><a href="#pricing">قیمت‌ها</a><a href="#concepts">نمونه‌ها</a><a href="#contact">تماس</a></nav>
         <div className="actions"><details className="lang"><summary>FA ◉</summary><div><a href="/">English</a><a href="/sv">Svenska</a><a href="/fa">فارسی</a></div></details><a className="primary" href="#contact">شروع ساخت ←</a></div>
       </header>
 
@@ -52,6 +53,7 @@ export default function PersianHome() {
 
       <section className="cta"><p className="kicker">قدم بعدی</p><h2>آماده‌ای کسب‌وکارت را با مسیر روشن‌تری بسازی؟</h2><a className="primary" href="#contact">شروع با ELORNA</a></section>
 
+      <OfferSections language="fa"/>
       <section className="contact" id="contact"><p className="kicker">تماس با ELORNA</p><h2>برای شروع گفتگو با ما در تماس باش</h2><p>برای بررسی نیاز کسب‌وکار، محدوده‌ی کار و قدم بعدی می‌توانی مستقیماً ایمیل بفرستی.</p><div className="contact-grid"><a href="mailto:contact@elorna.net">contact@elorna.net</a><a href="mailto:elnaz@elorna.net">elnaz@elorna.net</a><a href="mailto:support@elorna.net">support@elorna.net</a></div></section>
 
       <footer className="footer">© ۲۰۲۶ ELORNA — تمامی حقوق محفوظ است.</footer>

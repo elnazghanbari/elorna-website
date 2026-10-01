@@ -1,3 +1,4 @@
+import "./offers.css";
 import "./globals.css";
 import "./premium.css";
 import "./journey-bento.css";

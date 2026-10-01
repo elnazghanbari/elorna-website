@@ -1,3 +1,4 @@
+import OfferSections from "../components/OfferSections";
 const businessStages = [
   {
     number: "01",
@@ -156,7 +157,8 @@ export default function Home() {
             ["Plattform", "#platform"],
             ["Resan", "#journey"],
             ["AI", "#ai"],
-            ["Vision", "#vision"],
+            ["Priser", "#pricing"],
+            ["Koncept", "#concepts"],
             ["Kontakt", "#contact"],
           ].map(([label, href]) => (
             <a key={label} href={href} className="nav-lux-link" style={styles.navLink}>
@@ -467,6 +469,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <OfferSections language="sv" />
 
       {/* CONTACT */}
       <section id="contact" style={styles.contactSection}>
