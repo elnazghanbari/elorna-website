@@ -1,3 +1,4 @@
+import ProjectShowcase from "../projects/ProjectShowcase";
 import OfferSections from "../components/OfferSections";
 const businessStages = [
   {
@@ -470,6 +471,7 @@ export default function Home() {
         </div>
       </section>
 
+      <ProjectShowcase language="sv" />
       <OfferSections language="sv" />
 
       {/* CONTACT */}

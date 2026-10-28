@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://elorna.net";
   return [
+    ...["/projects", "/projects/smartfarm", "/projects/finance", "/projects/ai"].map(path => ({ url: base + path, changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: base, changeFrequency: "weekly", priority: 1 },
     { url: base + "/sv", changeFrequency: "weekly", priority: 0.8 },
     { url: base + "/fa", changeFrequency: "weekly", priority: 0.8 },

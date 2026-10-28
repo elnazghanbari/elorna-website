@@ -1,3 +1,4 @@
+import ProjectShowcase from "../projects/ProjectShowcase";
 import OfferSections from "../components/OfferSections";
 const stages = [
   { title: "ساخت", text: "ایده‌ات را به یک کسب‌وکار متمرکز تبدیل کن؛ از استراتژی و جایگاه‌یابی تا هویت برند و برنامه‌ی آماده برای راه‌اندازی.", best: "مناسب برای بنیان‌گذاران و کسب‌وکارهای نوپا که ایده یا پیشنهاد اولیه دارند اما هنوز مسیر، برند و برنامه‌ی روشن برای شروع ندارند.", example: "نمونه خروجی: جایگاه‌یابی، جهت برند و چک‌لیست عملی راه‌اندازی." },
@@ -53,6 +54,7 @@ export default function PersianHome() {
 
       <section className="cta"><p className="kicker">قدم بعدی</p><h2>آماده‌ای کسب‌وکارت را با مسیر روشن‌تری بسازی؟</h2><a className="primary" href="#contact">شروع با ELORNA</a></section>
 
+      <ProjectShowcase language="fa" />
       <OfferSections language="fa"/>
       <section className="contact" id="contact"><p className="kicker">تماس با ELORNA</p><h2>برای شروع گفتگو با ما در تماس باش</h2><p>برای بررسی نیاز کسب‌وکار، محدوده‌ی کار و قدم بعدی می‌توانی مستقیماً ایمیل بفرستی.</p><div className="contact-grid"><a href="mailto:contact@elorna.net">contact@elorna.net</a><a href="mailto:elnaz@elorna.net">elnaz@elorna.net</a><a href="mailto:support@elorna.net">support@elorna.net</a></div></section>
 
