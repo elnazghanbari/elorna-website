@@ -1,3 +1,4 @@
+import ProjectShortcut from "../components/ProjectShortcut";
 import ProjectShowcase from "../projects/ProjectShowcase";
 import OfferSections from "../components/OfferSections";
 const businessStages = [
@@ -184,6 +185,7 @@ export default function Home() {
           </a>
         </div>
       </header>
+<ProjectShortcut language="sv" />
 
       {/* HERO */}
       <section id="top" style={styles.hero}>

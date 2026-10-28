@@ -1,3 +1,4 @@
+import ProjectShortcut from "../components/ProjectShortcut";
 import ProjectShowcase from "../projects/ProjectShowcase";
 import OfferSections from "../components/OfferSections";
 const stages = [
@@ -30,6 +31,7 @@ export default function PersianHome() {
         <nav className="links" aria-label="ناوبری اصلی"><a href="#platform">پلتفرم</a><a href="#journey">مسیر</a><a href="#ai">هوش مصنوعی</a><a href="#pricing">قیمت‌ها</a><a href="#concepts">نمونه‌ها</a><a href="#contact">تماس</a></nav>
         <div className="actions"><details className="lang"><summary>FA ◉</summary><div><a href="/">English</a><a href="/sv">Svenska</a><a href="/fa">فارسی</a></div></details><a className="primary" href="#contact">شروع ساخت ←</a></div>
       </header>
+<ProjectShortcut language="fa" />
 
       <section className="hero" id="top">
         <div><p className="kicker">هوش مصنوعی • فناوری • کسب‌وکار • آینده</p><h1>کسب‌وکارت را بساز.<br/><span className="gold">آینده خودت را شکل بده.</span></h1><p className="lead">برای بنیان‌گذاران و کسب‌وکارهای کوچکی که می‌خواهند یک کسب‌وکار دیجیتال جدی بسازند: ELORNA استراتژی، راه‌اندازی، فروش و رشد را در یک مسیر یکپارچه و کمک‌گرفته از هوش مصنوعی به هم متصل می‌کند؛ تا بدانی قدم بعدی چیست، از چه ابزارهایی استفاده کنی و پیشرفت را چگونه بسنجی.</p><div className="hero-buttons"><a className="primary" href="#contact">شروع ساخت</a><a className="secondary" href="#journey">ببین چگونه کار می‌کند</a></div></div>
