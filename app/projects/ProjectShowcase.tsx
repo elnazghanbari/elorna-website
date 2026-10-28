@@ -81,7 +81,7 @@ export default function ProjectShowcase({
                   height={400}
                   loading="lazy"
                   className={
-                    "pf:aspect-[16/10] pf:w-full pf:border-b pf:border-white/10 pf:object-contain"
+                    "pf:aspect-[16/10] pf:h-auto pf:w-full pf:border-b pf:border-white/10 pf:object-contain"
                   }
                 />
               </Link>
